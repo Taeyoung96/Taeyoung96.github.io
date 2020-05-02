@@ -20,7 +20,7 @@ title                    : "Tyoung96의 기록"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Taeyoung Kim"
-description              : "An amazing website."
+description              : "한 발자국씩 앞으로 나아가자"
 url                      : "https://Taeyoung96.github.io"
 baseurl                  : ""
 repository               : "Taeyoung96/Taeyoung96.github.io"
@@ -101,7 +101,7 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
+      url: tyoung96@naver.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -113,7 +113,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/Taeyoung96"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
@@ -129,7 +129,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/Taeyoung96"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
