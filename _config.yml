@@ -25,7 +25,7 @@ url                      : "https://Taeyoung96.github.io"
 baseurl                  : ""
 repository               : "Taeyoung96/Taeyoung96.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "https://user-images.githubusercontent.com/41863759/80867691-7c04d880-8cd0-11ea-8bc3-33cdab50c217.jpg"
+logo                     : #
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -51,7 +51,7 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
+search                   : true #false (default)
 search_full_content      : # true, false (default)
 search_provider          : # lunr (default), algolia, google
 algolia:
@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "TaeYoung Kim"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "https://user-images.githubusercontent.com/41863759/80867691-7c04d880-8cd0-11ea-8bc3-33cdab50c217.jpg"
   bio              : "Record What I have studied"
   location         : "Seoul, South Korea"
   email            :
@@ -275,7 +275,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
+      read_time: false
       comments: # true
       share: true
       related: true
