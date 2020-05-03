@@ -16,13 +16,13 @@ minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "ko"
-title                    : "Tyoung96의 기록"
+title                    : "Tae Young's Blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Taeyoung Kim"
 description              : "한 발자국씩 앞으로 나아가자"
 url                      : "https://Taeyoung96.github.io"
-baseurl                  : ""
+baseurl                  : "https://Taeyoung96.com"
 repository               : "Taeyoung96/Taeyoung96.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : #
@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "TaeYoung Kim"
   avatar           : "https://user-images.githubusercontent.com/41863759/80867691-7c04d880-8cd0-11ea-8bc3-33cdab50c217.jpg"
-  bio              : "Record What I have studied"
+  bio              : "Record what I have studied"
   location         : "Seoul, South Korea"
   email            :
   links:
@@ -279,3 +279,16 @@ defaults:
       comments: # true
       share: true
       related: true
+
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: false
+      share: true
+      related: false
+
