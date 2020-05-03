@@ -22,7 +22,7 @@ subtitle                 : # site tagline that appears below site title in masth
 name                     : "Taeyoung Kim"
 description              : "한 발자국씩 앞으로 나아가자"
 url                      : "https://Taeyoung96.github.io"
-baseurl                  : "https://Taeyoung96.com"
+baseurl                  : ""
 repository               : "Taeyoung96/Taeyoung96.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : #
