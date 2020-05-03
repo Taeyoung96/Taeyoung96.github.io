@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "ko"
-title                    : "Tae Young's Blog"
+title                    : "TaeYoung's Blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Taeyoung Kim"
@@ -280,7 +280,7 @@ defaults:
       share: true
       related: true
 
-  # _pages
+ # _pages
   - scope:
       path: ""
       type: pages
