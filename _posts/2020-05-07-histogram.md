@@ -39,7 +39,15 @@ Histogram specification과 Histogram matching은 서로 비슷한 의미이다.
 
 정규화 된 Histogram을 만드는데 쓰이는 식은 다음과 같다.
 
-$$
+$H(i)_n=Qmax*H(i)/n$
+
+- $H(i)_n$은 정규화된 히스토그램 값,
+- $Qmax$는 명도의 최대값 (여기서는 255)
+- $H(i)$는 누적 히스토그램 값, n은 픽셀의 수(가로*세로)를 뜻한다.
+
+자세한 설명은 아래의 동영상을 참고하자.
+
+  {% include histogram_video.html id="WXHFmJVHvag" %}  
 
 
 
