@@ -18,7 +18,7 @@ toc_sticky : true
 
 
 ## 1. Histogram specification이란?
----
+
 영상의 Histogram을 사용자가 원하는 모양의 Histogram으로 변형하고 싶을 때 사용하는 방법이다.
 
 명암 대비를 개선 시키는 것은 Histogram Equalization과 비슷하다.
@@ -30,7 +30,7 @@ Histogram specification과 Histogram matching은 서로 비슷한 의미이다.
 그렇다면, Histogram specification을 하기 위해서는 어떤 과정을 거쳐야 할까?
 
 ## 2. Histogram specification을 하기 위한 단계
----
+
 1. Input Image의 Histogram과 Target Image의 Histogram을 각각 구한다.
 
 2. 각각 구한 Histogram에 각각 누적 Histogram을 구한다.
@@ -39,7 +39,7 @@ Histogram specification과 Histogram matching은 서로 비슷한 의미이다.
 
 정규화 된 Histogram을 만드는데 쓰이는 식은 다음과 같다.
 
-This formula $f(x) = x^2$ is an example.
+$$
 
 
 
