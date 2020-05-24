@@ -49,6 +49,8 @@ $H(i)_n=Qmax*H(i)/n$
 
   {% include histogram_video.html id="WXHFmJVHvag" %}  
 
+  
+
 
 
 
