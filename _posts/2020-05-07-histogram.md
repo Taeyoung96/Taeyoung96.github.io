@@ -49,7 +49,40 @@ $H(i)_n=Qmax*H(i)/n$
 
 [![histogram](https://user-images.githubusercontent.com/41863759/82750397-da623a00-9dea-11ea-9f5c-aa6e7c1fe544.JPG)](https://www.youtube.com/watch?v=WXHFmJVHvag)
 
-  
+4. 정규화된 누적 Histogram을 형변환을 통해 unsigned char 형식으로 바꾼다.
+
+5. QImage, QPixmap, QLabel을 이용하여 Histogram specification을 한 이미지를 출력한다.
+
+## 3. Histogram specification 정리 및 소스 코드
+
+내가 구현한 Histogram specification은 raw 파일을 기준으로 Grayscale 이미지에 대해서 구현을 하였다.
+
+Histogram equalization의 단점을 보완할 수 있는 알고리즘이라고 생각한다.
+
+내가 구현한 이미지에 대해서는 Histogram equalization 과 Histogram specification의 차이를 눈으로 확인하기는 어려웠다.
+
+![image](https://user-images.githubusercontent.com/41863759/82750811-c835cb00-9ded-11ea-89f5-9be532048c33.png)
+
+<center>< Histogram Equalization 결과 출력 화면 ></center>
+<br></br>
+
+![image](https://user-images.githubusercontent.com/41863759/82750822-d8e64100-9ded-11ea-8826-0fd0dd8f2fe3.png)
+
+<center>< Histogram Specification 결과 출력 화면 ></center>
+
+전체 코드는 [Histogram ]
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
