@@ -31,15 +31,15 @@ Histogram specification과 Histogram matching은 서로 비슷한 의미이다.
 
 ## 2. Histogram specification을 하기 위한 단계
 
-1. Input Image의 Histogram과 Target Image의 Histogram을 각각 구한다.
+1 . Input Image의 Histogram과 Target Image의 Histogram을 각각 구한다.
 
-2. 각각 구한 Histogram에 각각 누적 Histogram을 구한다.
+2 . 각각 구한 Histogram에 각각 누적 Histogram을 구한다.
 
-3. 누적 Histogram을 이용하여 정규화된 누적 Histogram을 만든다.
+3 . 누적 Histogram을 이용하여 정규화된 누적 Histogram을 만든다.
 
-정규화 된 Histogram을 만드는데 쓰이는 식은 다음과 같다.
+<center> 정규화 된 Histogram을 만드는데 쓰이는 식은 다음과 같다. </center>
 
-$H(i)_n=Qmax*H(i)/n$
+<center> $H(i)_n=Qmax*H(i)/n$ </center>
 
 - $H(i)_n$은 정규화된 히스토그램 값,
 - $Qmax$는 명도의 최대값 (여기서는 255)
@@ -49,9 +49,9 @@ $H(i)_n=Qmax*H(i)/n$
 
 [![histogram](https://user-images.githubusercontent.com/41863759/82750397-da623a00-9dea-11ea-9f5c-aa6e7c1fe544.JPG)](https://www.youtube.com/watch?v=WXHFmJVHvag)
 
-4. 정규화된 누적 Histogram을 형변환을 통해 unsigned char 형식으로 바꾼다.
+4 . 정규화된 누적 Histogram을 형변환을 통해 unsigned char 형식으로 바꾼다.
 
-5. QImage, QPixmap, QLabel을 이용하여 Histogram specification을 한 이미지를 출력한다.
+5 . QImage, QPixmap, QLabel을 이용하여 Histogram specification을 한 이미지를 출력한다.
 
 ## 3. Histogram specification 정리 및 소스 코드
 
@@ -64,7 +64,7 @@ Histogram equalization의 단점을 보완할 수 있는 알고리즘이라고 �
 ![image](https://user-images.githubusercontent.com/41863759/82750811-c835cb00-9ded-11ea-89f5-9be532048c33.png)
 
 <center>< Histogram Equalization 결과 출력 화면 ></center>
-<br></br>
+<br> </br>
 
 ![image](https://user-images.githubusercontent.com/41863759/82750822-d8e64100-9ded-11ea-8826-0fd0dd8f2fe3.png)
 
