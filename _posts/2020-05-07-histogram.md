@@ -66,12 +66,16 @@ Histogram equalization의 단점을 보완할 수 있는 알고리즘이라고 �
 
 <center>< Histogram Equalization 결과 출력 화면 ></center>
 
+<br>
+
 
 ![image](https://user-images.githubusercontent.com/41863759/82750822-d8e64100-9ded-11ea-8826-0fd0dd8f2fe3.png)
 
 <center>< Histogram Specification 결과 출력 화면 ></center>
 
-전체 코드는 [Histogram Specification](https://taeyoung96.github.io/image_processing/histogram/) 를 참고하면 된다.
+<br>
+
+전체 코드는 [Histogram Specification](https://github.com/Taeyoung96/Histogram_Matching_Qt) 를 참고하면 된다.
 
 
 
