@@ -6,6 +6,8 @@ main:
     url: /categories/machine_learning
   - title: "Image Processing"
     url: /categories/image_processing
+  - title: "Categories"
+    url: /categories/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
