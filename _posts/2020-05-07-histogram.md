@@ -8,6 +8,7 @@ tag :
     - image processing
     - histogram
 toc: true
+toc_sticky: true
 comments : true
 toc_sticky : true
 ---
