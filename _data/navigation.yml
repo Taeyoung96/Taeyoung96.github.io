@@ -1,7 +1,7 @@
 # main links
 main:
-#  - title: "논문 정리"
-#    url: /categories/논문정리
+ - title: "CS231n 요약"
+   url: /categories/CS231n/
 #  - title: "Machine Learning"
 #    url: /categories/machine_learning
 #  - title: "Image Processing"
