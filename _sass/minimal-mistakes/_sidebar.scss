@@ -127,7 +127,8 @@
   }
 
   img {
-    max-width: 175px;
+    // 사이드바 이미지 크기 조절
+    max-width: 150px;
     border-radius: 15%;
 
     @include breakpoint($large) {
