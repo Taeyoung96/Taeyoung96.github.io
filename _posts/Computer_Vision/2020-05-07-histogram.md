@@ -10,7 +10,6 @@ tag :
 toc: true
 toc_sticky: true
 comments : true
-toc_sticky : true
 ---
 
 **Qt Creator**를 이용하여 **Histogram specification**를 구현해보자.
