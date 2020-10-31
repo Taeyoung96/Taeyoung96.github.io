@@ -40,7 +40,7 @@ Anaconda나 ROS같이 경로를 바꾸어주는 친구들이 있다면 더욱 �
 - [Ubuntu 16.04 에 Caffe 설치하기(GPU with CUDA)](https://kyubot.tistory.com/93)
 
 만약 OpenCV 설치가 끝난 후 터미널 창에    
-`pkg-config --modversion opencv`
+`pkg-config --modversion opencv`  
 를 입력하고 다음과 같은 결과가 나오면 설치해 성공한 것이다.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/97781958-21423000-1bd2-11eb-9297-98e67516a313.png" width = "500" ></p>
