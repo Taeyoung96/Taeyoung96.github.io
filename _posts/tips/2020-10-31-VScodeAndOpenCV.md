@@ -63,9 +63,14 @@ Anaconda나 ROS같이 경로를 바꾸어주는 친구들이 있다면 더욱 �
 > - task.json
 > - 컴파일러 경로  
 
-그럼 차근차근 설정해보자!
+그럼 차근차근 설정해보자!  
 
-이제 그렇다면 VSCode를 열고 좌측 상단에 있는 `파일(F)`를 클릭한다.
+먼저 확인해야 할 점은  
+1. Cmake가 설치되어 있는가? 없다면 VScode 터미널 창에 `$ sudo apt-get install cmake`  
+2. CMakeLists.txt를 만들 때 경로는 main.cpp가 있는 곳과 같아야 한다.  
+3. 하나의 폴더 내부에 vscode라는 폴더, build 폴더, 그리고 메인 cpp 파일이 있는지 확인하자.  
+
+확인이 끝났다면 VSCode를 열고 좌측 상단에 있는 `파일(F)`를 클릭한다.
 그 후 `폴더 열기` 버튼을 누른 후 내가 빌드하고 싶은 소스코드 파일을 Open한다.  
 
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/97782168-54d18a00-1bd3-11eb-90a9-b17dc2dea1a2.png" width = "600" ></p>
