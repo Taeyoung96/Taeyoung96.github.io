@@ -1,11 +1,11 @@
 ---
 title : "Qt를 이용하여 Histogram specification(Equalization) 구현하기"
 category :
-    - Image_processing
+    - Computer_Vision
 tag :
     - qt
     - raw data
-    - image processing
+    - Computer_Vision
     - histogram
 toc: true
 toc_sticky: true
