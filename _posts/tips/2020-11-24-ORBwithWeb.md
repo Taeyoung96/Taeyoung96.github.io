@@ -133,20 +133,22 @@ librealsense에 해당하는 소스코드를 git clone 해줍니다.
 드디어 길었던 빌드의 과정이 끝났습니다!  
 
 - Monocular 모드로 실시간으로 구동하기  
-우선, `/Examples/Monocular/mono_tum.cc`에서 `#define UsingWebCam`을 활성화 시켜줍니다.  
+
+    우선, `/Examples/Monocular/mono_tum.cc`에서 `#define UsingWebCam`을 활성화 시켜줍니다.  
 
     **소스 코드 안에 카메라 index를 자신에 맞게 꼭 변경해주세요!**
 
-    그리고 터미널에 `./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt ./Examples/Monocular/d435.yaml`  
+    그리고 터미널에 `./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt ./Examples/Monocular/d435.yaml` (한 줄 모두 입력입니다.)
 
 잘 따라오셨다면 정상적으로 작동할 겁니다!
 
 카메라를 'Realsense d435'를 사용했기 때문에 그에 맞는 .yaml 파일을 사용하였습니다.  
 
 - RGB-D 모드로 실시간으로 구동하기  
-우선, `/Examples/RGB-D/rgbd_tum.cc`에서 `#define UsingWebCam`을 활성화 시켜줍니다.  
 
-    그리고 터미널에 `./Examples/RGB-D/rgbd_tum Vocabulary/ORBvoc.txt ./Examples/RGB-D/d435.yaml `  
+    우선, `/Examples/RGB-D/rgbd_tum.cc`에서 `#define UsingWebCam`을 활성화 시켜줍니다.  
+
+    그리고 터미널에 `./Examples/RGB-D/rgbd_tum Vocabulary/ORBvoc.txt ./Examples/RGB-D/d435.yaml ` (한 줄 모두 입력입니다.)
 
 RGB-D 카메라를 이용해서도 실시간으로 ORB-SLAM2를 구동할 수 있습니다.  🎉
 
