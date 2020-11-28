@@ -3,7 +3,7 @@ main:
   - title: "CS231n"
     url: /categories/CS231n/
   - title: "SLAM"
-   url: /categories/Slam/
+    url: /categories/Slam/
 #  - title: "Image Processing"
 #    url: /categories/image_processing
   - title: "Categories"
