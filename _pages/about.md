@@ -5,8 +5,10 @@ layout: single
 
 ---
 
-## Taeyoung96.github.io 블로그
+자율 주행 자동차, 로봇 SW 엔지니어가 되고 싶은 학생입니다.  
 
-이 블로그는 내가 배운 것을 정리하고 기록하기 위해 만들어진 블로그이다.
+제가 배운 것을 기록하고 공유하기 위해 블로그를 시작하게 되었습니다. 😄  
 
-진짜 블로그인 <https://Taeyoung96.github.io>를 방문해보자.
+어제보다 오늘 더 발전하는 모습을 계속 보여주고 싶습니다.
+
+블로그 글쓴이에 대해 궁금하신 분들은 [CV](https://github.com/Taeyoung96/TaeyoungKim_CV/blob/master/TaeyoungKim_CV.pdf) 및 [Github](https://github.com/Taeyoung96)을 참고해주세요!
