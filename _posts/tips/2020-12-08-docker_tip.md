@@ -19,16 +19,16 @@ comments: true
 **Docker 명령어는 항상 root 권한으로 실행해야 한다!**  
 
 - **Docker 접속**(바로 docker 안에 workspace로 접속한다.) :  
-    `docker exec -it [컨테이너 이름] bash`
+    `docker exec -it [컨테이너 이름] bash`  
     `docker attach [컨테이너 이름]` 
 
 - **Docker Image 목록 확인하기** : 
     `docker images`
 
-- **Docker Container 시작하기** :  
+- **Docker Container 시작하기** : 
     `docker start [컨테이너 이름]`
 
-- **Docker Container 끄기** :  
+- **Docker Container 끄기** : 
     `docker stop [컨테이너 이름]`  
 
 - **Docker Container 목록 보기** (현재 실행 중인 컨테이너만) : 
@@ -43,7 +43,7 @@ comments: true
 - **Docker Image 삭제** : 
     `docker rmi [이미지 이름]`  
 
-- **Docker Container에서 Image 생성하기** : 
+- **Docker Container에서 Image 생성하기** :  
     `docker commit [options] [컨테이너 이름] [이미지 이름[:tag name]]`  
     -   옵션 정보  
         - `-a, --author=""` : 생성자 정보  
@@ -51,10 +51,12 @@ comments: true
         - `-p, --pause=true/false` : 이미지를 생성할 때 컨테이너를 중지(stop) 한 뒤 commit 여부
 
 
-- **Docker에서 Jupyter notebook 접속하기** : 
-    `jupyter notebook --ip=0.0.0.0 --port=[포트 번호] --allow-root` - 포트 번호는 보통 8888이다.  
+- **Docker에서 Jupyter notebook 접속하기** :  
+    `jupyter notebook --ip=0.0.0.0 --port=[포트 번호] --allow-root`  
+    포트 번호는 보통 8888이다.  
 
 - **Docker에서 Tensorboard 접속하기** :  
-    `tensorboard --logdir=[log 경로] --port [포트 번호] --host=0.0.0.0` - 포트 번호는 보통 6006이다.  
+    `tensorboard --logdir=[log 경로] --port [포트 번호] --host=0.0.0.0`  
+    포트 번호는 보통 6006이다.  
 
 
