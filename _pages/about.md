@@ -11,4 +11,4 @@ layout: single
 
 어제보다 오늘 더 발전하는 모습을 계속 보여주고 싶습니다.
 
-블로그 글쓴이에 대해 궁금하신 분들은 [CV](https://github.com/Taeyoung96/TaeyoungKim_CV/blob/master/TaeyoungKim_CV.pdf) 및 [Github](https://github.com/Taeyoung96)을 참고해주세요!
+저에 대해 궁금하신 분들은 [CV](https://github.com/Taeyoung96/TaeyoungKim_CV/blob/master/TaeyoungKim_CV.pdf) 및 [Github](https://github.com/Taeyoung96)을 참고해주세요!
