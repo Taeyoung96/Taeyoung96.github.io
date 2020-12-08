@@ -1,5 +1,9 @@
 # main links
 main:
+  - title: "About Me"
+    url: /about/
+  - title: "Paper Review"
+    url: /categories/Paper_Review/
   - title: "CS231n"
     url: /categories/CS231n/
   - title: "SLAM"
