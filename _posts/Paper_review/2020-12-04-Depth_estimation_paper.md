@@ -1,9 +1,9 @@
 ---
 title : "The paper list what I have read"
 category :
-    - 논문정리
+    - Paper_Review
 tag :
-    - 논문
+    - Paper_Review
 toc : true
 comments: true
 toc_sticky: true
