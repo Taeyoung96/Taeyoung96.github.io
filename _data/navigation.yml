@@ -8,8 +8,8 @@ main:
     url: /categories/CS231n/
   - title: "SLAM"
     url: /categories/Slam/
-#  - title: "Image Processing"
-#    url: /categories/image_processing
+  - title: "Mathematics"
+    url: /categories/mathematics/
   - title: "Categories"
     url: /categories/
  
