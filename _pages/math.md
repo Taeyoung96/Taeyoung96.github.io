@@ -1,5 +1,5 @@
 ---
-title: "mathematics"
+title: "Mathematics"
 permalink: /categories/mathematics/
 layout: category
 author_profile: true
