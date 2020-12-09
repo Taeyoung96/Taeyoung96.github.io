@@ -29,3 +29,12 @@ toc_sticky: true
 - [Learning the Depths of Moving People by Watching Frozen People](https://arxiv.org/abs/1904.11111)  
 > CVPR 2019에 소개된 논문으로 단일의 카메라를 이용해서 객체의 Depth를 추정하는 시나리오를 제시하였다.  
     이 논문의 main idea는 카메라도 움직이고, 물체가 움직인다는 상황에서 물체의 깊이를 추정할 수 있는 방법을 제시하였다. 또한 이 모델을 이용해서 새로운 DataSet도 만들어 내었다. 다만 모델의 Input으로 사진뿐 아니라 여러 추가적인 정보들이 들어가야 하고, 자체적으로 만든 평가지표에서 좋은 성능을 냈다고 주장하고 있다.  
+
+## 3D Object Detection  
+
+- [Total3DUnderstanding: Joint Layout, Object Pose and Mesh Reconstruction for
+Indoor Scenes from a Single Image](https://arxiv.org/abs/2002.12212)  
+> CVPR 2020에 소개된 논문으로 실내 공간의 단일의 이미지에서 Object를 3차원으로 찾고, 찾은 물체를 Mesh를 통해 reconstruction하는 방법을 제시한 논문이다.  
+NIPS 2018에서 소개된 **'Cooperative Holistic Scene Understanding: Unifying 3D Object, Layout, and Camera Pose Estimation'** 와  
+CVPR 2018에서 소개된 **'Relation Networks for Object Detection'** 그리고 ICCV 2019에서 소개된 **'Deep Mesh Reconstruction from Single RGB Images via Topology Modification Networks'** 를 한번에 처리를 할 수 있도록 네트워크를 설계했다.  
+
