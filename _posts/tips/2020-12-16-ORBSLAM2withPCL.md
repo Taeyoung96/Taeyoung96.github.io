@@ -83,7 +83,7 @@ Repository 안에 있는 **orbslam2_modified.zip**의 압축 파일을 풀어주
 
 당황하지 말고 `g2o_with_orbslam2/g2o/types/slam2d/edge_se2_pointxy_bearing.cpp`에 들어가서  
 
-line 51번째 줄 ` t.setRotation(t.rotation().angle()+_measurement);`를  
+line 51번째 줄 `t.setRotation(t.rotation().angle()+_measurement);`를  
 
 <p align="center"> 👇👇👇 </p> 
 
@@ -405,7 +405,8 @@ cd datasets
 경로를 `~ /ORB_SLAM2_modified`으로 이동시킨 후,  
 실행 명령어를 입력한다!  
 `./Examples/RGB-D/rgbd_tum Vocabulary/ORBvoc.txt Examples/RGB-D/TUM1.yaml datasets/rgbd_dataset_freiburg1_room/ Examples/RGB-D/associations/fr1_room.txt
-`
+`  
+
 위의 명령어를 한 줄로 입력해야 한다!  
 
 문제 없이 실행이 된다면
