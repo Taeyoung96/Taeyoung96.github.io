@@ -24,9 +24,10 @@ pcl library를 이용해서 RGB-D Image에 Dense한 Map을 만들 수 있다.
 다음과 같은 Pointcloud Map을 Viewer를 통해서 볼 수 있다!  
 
 ## 1. Git clone 및 버전 확인  
-이번 repository를 다운을 받고, **<font color='#FF0000'>실행을 시켜보면서 느낀건 컴퓨터의 사양과 버전이 정말 중요하다는 것이다.</font>**  
+이번 repository를 다운을 받고,  
+**실행을 시켜보면서 느낀건 라이브러리 버전을 일치하는 것이 정말 중요하다는 것이다.**  
 
-내 컴퓨터의 Spec은 다음과 같다.  
+우선 컴퓨터의 Spec은 다음과 같다.  
 - OS : Ubuntu 18.04  
 - CPU : Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz  
 - RAM : 32G  
@@ -37,7 +38,7 @@ pcl library를 이용해서 RGB-D Image에 Dense한 Map을 만들 수 있다.
 - Eigen : 3.3.4  
 - CMake : 3.10.2  
 
-**만약 버전이 나와 다를시, 내 방법대로 빌드를 진행해도 실행이 되지 않을 수 있다..**
+**<font color='#FF0000'>만약 버전이 나와 다를시, 내 방법대로 빌드를 진행해도 실행이 되지 않을 수 있다..</font>**
 
 Github을 통해 다운 받을 오픈소스는  
 1. [Pangolin](https://github.com/stevenlovegrove/Pangolin)  
@@ -45,7 +46,7 @@ Github을 통해 다운 받을 오픈소스는
 3. [DBoW2](https://github.com/dorian3d/DBoW2)  
 
 
-이 Repository를 실행시키는데 핵심은 **CMakeList.txt**이다.  
+이 Repository를 실행시키는데 핵심은 **<font color='#0000FF'>CMakeList.txt</font>** 이다.  
 
 우선 터미널을 열고,  
 `git clone https://github.com/gaoxiang12/ORBSLAM2_with_pointcloud_map.git`  
@@ -83,6 +84,9 @@ Repository 안에 있는 **orbslam2_modified.zip**의 압축 파일을 풀어주
 당황하지 말고 `g2o_with_orbslam2/g2o/types/slam2d/edge_se2_pointxy_bearing.cpp`에 들어가서  
 
 line 51번째 줄 ` t.setRotation(t.rotation().angle()+_measurement);`를  
+
+<p align="center"> 👇👇👇 </p> 
+
 `t.setRotation((Eigen::Rotation2Dd)(t.rotation().angle()+_measurement));`로 바꿔준다.  
 
 - 출처 : [Github Issue : ERROR Building g2o_modified](https://github.com/gaoxiang12/ORBSLAM2_with_pointcloud_map/issues/3)  
@@ -105,7 +109,7 @@ line 51번째 줄 ` t.setRotation(t.rotation().angle()+_measurement);`를
 
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/102332589-a1c8be80-3fcf-11eb-9274-a14bc3cc3852.png" width = "600" ></p>  
 
-위와 같은 문구가 터미널창에 떳다면, 빌드가 성공한 것 이다! :+1:  
+위와 같은 문구가 터미널창에 떳다면, 빌드가 성공한 것 이다!  
 
 ## 3. 빌드 진행 (ORB_SLAM2_modified/)
 
@@ -127,7 +131,8 @@ make
 따라서 `ORB_SLAM2_modified/Thirdparty`에 들어가 추가적인 빌드를 진행해 주어야 한다.  
 
 `ORB_SLAM2_modified/Thirdparty`안에 들어가보면,  
-`DBow2/`, `g2o/` 폴더가 존재하는데 다시 빌드를 진행해주어야 한다.(소스 코드 저자의 경로로 빌드가 되어있기 때문!)  
+`DBow2/`, `g2o/` 폴더가 존재하는데 다시 빌드를 진행해주어야 한다.  
+(소스 코드 저자의 경로로 빌드가 되어있기 때문!)  
 
 `ORB_SLAM2_modified/Thirdparty/DBoW2`의 폴더에 들어간 후,  
 `build/` 폴더를 삭제한 후,  
@@ -197,7 +202,7 @@ CMakeList.txt에 OpenCV 버전이 맞지 않아 생긴 오류이다.
 ```c
 find_package(OpenCV 2.4.3 QUIET)
 ```  
-를 아래처럼 바꿔준다.
+를 아래처럼 바꿔준다. (다른 부분은 모두 동일!)  
 
 ```c
 find_package(OpenCV 3.0 QUIET)
@@ -366,7 +371,7 @@ ${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
 )
 ```  
 
-이런 식으로 교체한다.  
+이런 식으로 교체한다. (다른 부분은 건들이지 말자)  
 
 다시 `make`를 진행하면,  
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/102346623-80250280-3fe2-11eb-8446-23f5e3499fb9.png" width = "600" ></p>  
@@ -399,7 +404,7 @@ cd datasets
 
 경로를 `~ /ORB_SLAM2_modified`으로 이동시킨 후,  
 실행 명령어를 입력한다!  
-`./Examples/RGB-D/rgbd_tum Vocabulary/ORBvoc.txt Examples/RGB-D/TUM1.yaml dataset/rgbd_dataset_freiburg1_room/ Examples/RGB-D/associations/fr1_room.txt
+`./Examples/RGB-D/rgbd_tum Vocabulary/ORBvoc.txt Examples/RGB-D/TUM1.yaml datasets/rgbd_dataset_freiburg1_room/ Examples/RGB-D/associations/fr1_room.txt
 `
 위의 명령어를 한 줄로 입력해야 한다!  
 
@@ -409,7 +414,7 @@ cd datasets
 
 위와 같은 화면이 나올 것이다.  
 
-만약 실행 도중
+**만약 실행 도중**
 ```
 New map created with 854 points
 receive a keyframe, id = 1
@@ -422,6 +427,7 @@ Segmentation fault (core dumped)
 라는 오류 메세지(혹은 비슷한 오류 메세지)가 뜨고 종료가 된다면,  
 
 PCL 라이브러리의 버전 문제일 가능성이 높다.  
+
 `ORB_SLAM2_modified/src/pointcloudmapping.cc`의 viewer() 함수의 약간의 수정이 필요한데,  
 ```cpp
 ...
@@ -469,7 +475,7 @@ void PointCloudMapping::viewer()
 
 위와 같이 중간에 주석처리를 해준다.  
 
-- 출처 : https://zhuanlan.zhihu.com/p/92642910 - 중국인의 블로그다. 번역기를 켜놓고 보자.  
+- 출처 : [https://zhuanlan.zhihu.com/p/92642910](https://zhuanlan.zhihu.com/p/92642910) - 중국인의 블로그다. 번역기를 켜놓고 보자.  
 
 이렇게 [ORBSLAM2_with_pointcloud_map](https://github.com/gaoxiang12/ORBSLAM2_with_pointcloud_map)의 소스 코드를 돌려봤다.  
 
