@@ -21,7 +21,7 @@ Event-based Vision: A Survey를 읽고 요약해보자!
 ## 이벤트 카메라란?  
 
 이벤트 카메라는 기존의 카메라와 달리 고정된 프레임 단위로 이미지를 캡쳐하는 것이 아닌,  
-<font color='ff0000'> 픽셀 간의 밝기 변화를 비동기적(asynchronously)으로 측정하고 기록하는 카메라</font>이다. 
+<font color='ff0000'> 픽셀 간의 밝기 변화를 비동기적(asynchronously)으로 측정하고 기록하는 카메라</font> 이다.   
 
 이벤트 카메라는 기존의 카메라(traditional camera)와 비교했을 때 다음과 같은 장점을 지닌다.  
 
@@ -103,8 +103,10 @@ Model-free approach에서는 Geometric, temporal, photometric-based의 loss func
 
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/112594409-399a3c00-8e4c-11eb-9eee-73304255c0ff.png" width = "800" ></p>  
 
-위 그림에서는 Event signal을 Visualization한 모습이다. (a)는 3차원 공간(x,y,t)에서의 event data를 나타낸 모습이고,  
-(b)는 하나의 event frame에 대해서 나타낸 모습이다. 또한 (c)는 Time surface에서 event signal을 표현, (d)는 Voxel-grid 관점에서 표현하였다. (e)는 Motion 보정을 통한 event image를 나타내고, 마지막으로 (f)는 기존의 Computer vision 방법과 호환을 위한 Grid를 이용하여 event signal을 표현하였다.  
+위 그림에서는 Event signal을 Visualization한 모습이다. (a)는 3차원 공간(x,y,t)에서의 event data를 나타낸 모습이고, (b)는 하나의 event frame에 대해서 나타낸 모습이다.  
+또한 (c)는 Time surface에서 event signal을 표현, (d)는 Voxel-grid 관점에서 표현하였다.  
+(e)는 Motion 보정을 통한 event image를 나타내고, 마지막으로 (f)는 기존의 Computer vision  
+방법과 호환을 위한 Grid를 이용하여 event signal을 표현하였다.  
 
 - **Individual events** : $e_k = (x_k, t_k, p_k)$는 event-by-event 처리를 할 때 event signal을 표현하는 방법이다. 주로 filter 기반이나 SNN(Spiking Neural Network)를 처리할 때 사용한다. 이전 event 정보들이나 추가적으로 알고 있는 정보들과 결합을 하여 output을 만들어낸다.  
 
@@ -116,7 +118,7 @@ Model-free approach에서는 Geometric, temporal, photometric-based의 loss func
 
 - **Voxel Grid** : Event data를 3차원 histogram으로 표시하려면 Voxel을 이용하는 방법도 있다. Voxel을 이용하면 시간적인 정보(temporal information)를 표현하는데 효과적이다. 각각의 event들이 voxel을 이용해서 축척될 수도 있고, kernal을 사용할 수도 있다.  
 
-- **3D point set** : Voxel과 비슷하게 3차원 point들의 집합으로 event data를 표현할 수 있다. 이렇게 표현할 경우 $(x_k, y_k, t_k) \in \Reals^3$으로 쓸 수 있고, point cloud를 처리하는 방식도 Event data에 적용을 해볼 수가 있다.  
+- **3D point set** : Voxel과 비슷하게 3차원 point들의 집합으로 event data를 표현할 수 있다. 이렇게 표현할 경우 $(x_k, y_k, t_k) \in {\Reals}^3$으로 쓸 수 있고, point cloud를 처리하는 방식도 Event data에 적용을 해볼 수가 있다.  
 
 - **Point sets on Image plane** : Event data들은 이미지 평면에서 2D points들의 집합으로 간주될 수 있습니다. ICP와 mean-shift algorithm 등 shape tracking 방법을 사용할 때 표현하는 방법이다.  
 
@@ -126,7 +128,11 @@ Model-free approach에서는 Geometric, temporal, photometric-based의 loss func
 
 ### Event processing의 방법  
 
-Hardware platform과 Event data를 어떻게 처리할 것인지에 따라 Event processing 방법이 많이 달라진다. 크게 Event-by-event 방법과 Group of Event 방법이 존재한다.  
+Hardware platform과 Event data를 어떻게 처리할 것인지에 따라 Event processing 방법이 많이 달라진다. 또한 어떤 tastk인지, ANN(Artificial neural network)에는 어떻게 통과할 것인지에 따라도 달라진다. 크게 Event-by-event 방법과 Group of Event 방법이 존재한다.  
+
+- **Event by event based methods** : Noise 제거, 특징 추출, Image reconstruction 등을 수행할 때 확률 기반의 Filter(ex 칼만 필터, 파티클 필터)가 주로 사용 된다. 또다른 방법으로는 다양한 형태의 ANN(인공 신경망)이 사용된다.  
+
+- **Methods for Groups of Events** : 
 
 
 
