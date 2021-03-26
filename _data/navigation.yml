@@ -2,6 +2,8 @@
 main:
   - title: "About Me"
     url: /about/
+  - title: "Research"
+    url: /categories/Research/
   - title: "Paper Review"
     url: /categories/Paper_Review/
   - title: "CS231n"
