@@ -6,14 +6,19 @@ main:
     url: /categories/Research/
   - title: "Paper Review"
     url: /categories/Paper_Review/
-  - title: "CS231n"
-    url: /categories/CS231n/
   - title: "SLAM"
     url: /categories/Slam/
   - title: "Mathematics"
     url: /categories/mathematics/
   - title: "Categories"
     url: /categories/
+
+side:
+  - title: Computer Vision
+    children:
+      - title: "CS231n Summary"
+        url: /categories/CS231n/
+  
  
   # - title: "Sample Posts"
   #   url: /year-archive/

@@ -279,6 +279,8 @@ defaults:
       comments: true
       share: true
       related: true
+      sidebar:  
+        nav: "side"
 
  # _pages
   - scope:
@@ -291,4 +293,6 @@ defaults:
       comments: false
       share: true
       related: false
+      sidebar:  
+        nav: "side"
 
