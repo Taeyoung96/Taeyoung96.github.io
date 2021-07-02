@@ -2,24 +2,39 @@
 main:
   - title: "About Me"
     url: /about/
-  - title: "Research"
-    url: /categories/Research/
-  - title: "Paper Review"
-    url: /categories/Paper_Review/
-  - title: "SLAM"
-    url: /categories/Slam/
-  - title: "Mathematics"
-    url: /categories/mathematics/
   - title: "Categories"
     url: /categories/
+  - title: "Tags"
+    url: /tags/
 
 side:
   - title: Computer Vision
     children:
       - title: "CS231n Summary"
         url: /categories/CS231n/
+      - title: "Paper Review"
+        url: /categories/Paper_Review/
+      - title: "Development Tip"
+        url: /categories/Computer_vision/
   
- 
+  - title: SLAM
+    children:
+      - title: "SLAM DUNK2 Summary"
+        url: /categories/Slam/
+  
+  - title: Mathematics
+    children:
+      - title: "Linear Algebra"
+        url: /categories/mathematics/
+
+  - title: Tips
+    children:
+      - title: "Daily Tips"
+        url: /categories/dailytips/
+      - title: "Etc"
+        url: /categories/tips/
+  
+
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"

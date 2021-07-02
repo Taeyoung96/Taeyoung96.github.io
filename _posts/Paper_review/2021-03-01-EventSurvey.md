@@ -1,7 +1,7 @@
 ---
 title : "Event camera survey 요약"
 category :
-    - Research
+    - Paper_Review
 tag :
     - Event camera
 toc : true
