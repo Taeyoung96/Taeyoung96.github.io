@@ -21,6 +21,8 @@ side:
     children:
       - title: "SLAM DUNK2 Summary"
         url: /categories/Slam/
+      - title: "Development Tip"
+        url: /categories/SlamTip/
   
   - title: Mathematics
     children:
