@@ -1,7 +1,7 @@
 ---
 title : "ORB-SLAM2 with PCL(Point Cloud Map Library)"
 category :
-    - tips
+    - SlamTip
 tag :
     - ORB-SLAM2
     - tips

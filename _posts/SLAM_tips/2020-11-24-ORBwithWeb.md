@@ -1,7 +1,7 @@
 ---
 title : "ORB-SLAM2 with WebCam(Monocular & RGBD)"
 category :
-    - tips
+    - SlamTip
 tag :
     - ORB-SLAM2
     - tips
