@@ -1,7 +1,6 @@
 ---
 title : "Event camera survey 요약"
 category :
-    - Paper_Review
     - Research
 tag :
     - Event camera

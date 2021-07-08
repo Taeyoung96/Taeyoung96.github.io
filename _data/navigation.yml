@@ -21,6 +21,8 @@ side:
     children:
       - title: "SLAM DUNK2 Summary"
         url: /categories/Slam/
+      - title: "Research"
+        url: /categories/Research/
       - title: "Development Tip"
         url: /categories/SlamTip/
   
