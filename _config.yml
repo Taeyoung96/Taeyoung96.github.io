@@ -90,7 +90,6 @@ analytics:
     tracking_id          : "UA-165344331-1"
     anonymize_ip         : # true, false (default)
 
-
 # Site Author
 author:
   name             : "TaeYoung Kim"
