@@ -1,5 +1,5 @@
 ---
-title : "Event camera survey 요약"
+title : "Event camera survey 요약 (1)"
 category :
     - Research
 tag :
@@ -9,7 +9,7 @@ toc_sticky: true
 comments: true
 ---
 
-Event-based Vision: A Survey를 읽고 요약해보자!  
+Event-based Vision: A Survey를 읽고 요약해보자! (1)  
 
 기존의 카메라와는 다른 생체 모방형 카메라 'Event Camera'에 대해 연구할 기회가 생겼다.  
 새로운 분야에 대해 알기 위해서는 보통 Survey 논문을 읽기 마련이다.  
@@ -110,7 +110,7 @@ Model-free approach에서는 Geometric, temporal, photometric-based의 loss func
 
 - **Individual events** : $e_k = (x_k, t_k, p_k)$는 event-by-event 처리를 할 때 event signal을 표현하는 방법이다. 주로 filter 기반이나 SNN(Spiking Neural Network)를 처리할 때 사용한다. 이전 event 정보들이나 추가적으로 알고 있는 정보들과 결합을 하여 output을 만들어낸다.  
 
-- **Event packet** : $ \varepsilon = \{e_k\}^{N_e}_{k=1}$은 시,공간적으로 이웃한 event signal을 합쳐 ouput으로 처리하는 방법을 말한다. {N_e}는 packet의 size를 말한다.  
+- **Event packet** : $ \varepsilon = \{e_k\}^{N_e}_{k=1}$은 시,공간적으로 이웃한 event signal을 합쳐 ouput으로 처리하는 방법을 말한다. ${N_e}$는 packet의 size를 말한다.  
 
 - **Event frame/image or 2D histogram** : 몇몇의 알고리즘은 event data의 통계적인 특징을 원하기도 한다. 기존의 Computer vision algorithm에서 사용되었던 historgam이 event image에도 적용이 되는데 이 방법은 event timestamps를 양자화하고, 공간적인 특징 정보를 무시하기 때문에 이상적인 방법은 아니다.  
 
@@ -118,7 +118,7 @@ Model-free approach에서는 Geometric, temporal, photometric-based의 loss func
 
 - **Voxel Grid** : Event data를 3차원 histogram으로 표시하려면 Voxel을 이용하는 방법도 있다. Voxel을 이용하면 시간적인 정보(temporal information)를 표현하는데 효과적이다. 각각의 event들이 voxel을 이용해서 축척될 수도 있고, kernal을 사용할 수도 있다.  
 
-- **3D point set** : Voxel과 비슷하게 3차원 point들의 집합으로 event data를 표현할 수 있다. 이렇게 표현할 경우 $(x_k, y_k, t_k) \in {\Reals}^3$으로 쓸 수 있고, point cloud를 처리하는 방식도 Event data에 적용을 해볼 수가 있다.  
+- **3D point set** : Voxel과 비슷하게 3차원 point들의 집합으로 event data를 표현할 수 있다. 이렇게 표현할 경우 $(x_k, y_k, t_k) \in {\R}^3$으로 쓸 수 있고, point cloud를 처리하는 방식도 Event data에 적용을 해볼 수가 있다.  
 
 - **Point sets on Image plane** : Event data들은 이미지 평면에서 2D points들의 집합으로 간주될 수 있습니다. ICP와 mean-shift algorithm 등 shape tracking 방법을 사용할 때 표현하는 방법이다.  
 
@@ -128,11 +128,37 @@ Model-free approach에서는 Geometric, temporal, photometric-based의 loss func
 
 ### Event processing의 방법  
 
-Hardware platform과 Event data를 어떻게 처리할 것인지에 따라 Event processing 방법이 많이 달라진다. 또한 어떤 tastk인지, ANN(Artificial neural network)에는 어떻게 통과할 것인지에 따라도 달라진다. 크게 Event-by-event 방법과 Group of Event 방법이 존재한다.  
+Hardware platform과 Event data를 어떻게 처리할 것인지에 따라 Event processing 방법이 많이 달라진다. 또한 어떤 task인지, ANN(Artificial neural network)에는 어떻게 통과할 것인지에 따라도 달라진다. 크게 Event-by-event 방법과 Group of Event 방법이 존재한다.  
 
-- **Event by event based methods** : Noise 제거, 특징 추출, Image reconstruction 등을 수행할 때 확률 기반의 Filter(ex 칼만 필터, 파티클 필터)가 주로 사용 된다. 또다른 방법으로는 다양한 형태의 ANN(인공 신경망)이 사용된다.  
+#### Event by event based methods
 
-- **Methods for Groups of Events** : 
+Noise 제거, 특징 추출, Image reconstruction 등을 수행할 때 확률 기반의 Filter(ex 칼만 필터, 파티클 필터)가 주로 사용 된다. 또다른 방법으로는 다양한 형태의 ANN(인공 신경망)이 사용된다.  
+
+#### Methods for Groups of Events
+
+각각의 event data들은 가지고 있는 의미가 적기 때문에 보통 Event packet, Event frame 등 여러 event data 정보를 묶어 processing을 진행한다. 그 중에서도 **Event frame**이 다양한 task에서 쓰이고 있는 방법이다. Event frame를 이용하여 Camera pose estimation, Optical Flow, Feature Tracking 등 전통적인 Computer vision에서 사용하는 알고리즘을 활용할 수 있다.  
+
+Event processing 방법 중 Time surface는 어떤 물체의 모양을 인식할 때, 활용될 수 있다. Time surface가 어떤 것을 의미하는지 검색을 해보았는데, 쉽게 생각하여 <u>시간에 따라 이벤트 정보를 축적하는 하나의 표현 방법</u>이다.  
+
+Time surface에 대한 자세한 내용은 "[Speed Invariant Time Surface
+for Learning to Detect Corner Points with Event-Based Cameras (CVPR 2019)](https://openaccess.thecvf.com/content_CVPR_2019/papers/Manderscheid_Speed_Invariant_Time_Surface_for_Learning_to_Detect_Corner_Points_CVPR_2019_paper.pdf)" 논문을 통해 알아보면 좋을 것 같다. Time surface를 Input으로 활용하여 Corner detector algorithm을 제안하거나 딥러닝 알고리즘을 만드는 연구도 활발히 진행 중이다.  
+
+Voxel grid를 활용한 처리 방법은 Memory를 많이 차지하고, 계산량이 많다는 단점이 있지만 Lower dimension에서 좀 더 나은 결과를 가지고 있다. Voxel grid로 Event data를 처리하게 되면 Convolutions를 통해 처리하거나, Objective function의 최적 조건을 통해 나온 연산을 통해 처리한다고 이야기하는데 사실 이 부분에 있어서는 이해가 잘 안된다. 😅  
+
+딥러닝 네트워크에 Event data를 Input으로 넣어줄 때는 Event image, Time surface, Voxel grid, Point set등 다양한 처리 방법으로 Input을 넣어주고 Task (Classification, Image reconstruction, Steering angle, prediction)에 맞게 Loss function을 설계한다.  
+
+보통 Network들은 아래와 같은 Encoder-Decoder 구조를 많이 사용한다.  
+이 Network는 "[Unsupervised
+event-based learning of optical flow, depth, and egomotion (CVPR 2019)](https://openaccess.thecvf.com/content_CVPR_2019/papers/Zhu_Unsupervised_Event-Based_Learning_of_Optical_Flow_Depth_and_Egomotion_CVPR_2019_paper.pdf)에서 제안한 네트워크이다.    
+<p align="center"><img src="https://user-images.githubusercontent.com/41863759/125039673-b686b400-e0d1-11eb-8e50-dbe548dec8c1.png" width = "500" ></p>  
+
+마지막으로 Motion compensation은 Group of events를 Motion을 찾는데 최적의 parameter를 찾는 기술을 말한다. Motion compensation을 이용하여 Ego-motion, Optical Flow, Depth, Motion Segmentation, VIO 등등 여러 분야에서 Event data를 활용할 수 있다.  
+
+Group에 있는 Event data의 수도 굉장히 중요한 Hyper-parameter이다. 이 것은 알고리즘에 따라, 어떤 장면을 촬영하는 지에 따라, Camera output rate에 따라 달라지므로 유동적으로 Event data의 수를 조절할 수 있어야 한다.  
+
+---
+
+이렇게 해서 Event data processing 까지 번역 (구글, 파파고 사랑해요 😍) 및 요약을 해봤다. 그 뒤에 생물학적으로 영감을 받은 Visual Processing 파트는 배경 지식이 너무 부족하므로 다음 포스팅에서는 Event camera를 활용한 여러 알고리즘 그리고 적용 분야를 소개하는 포스팅으로 요약을 이어가겠다.  
 
 
 
