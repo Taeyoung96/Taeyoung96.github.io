@@ -21,7 +21,7 @@ Event-based Vision: A Survey를 읽고 요약해보자! (1)
 ## 이벤트 카메라란?  
 
 이벤트 카메라는 기존의 카메라와 달리 고정된 프레임 단위로 이미지를 캡쳐하는 것이 아닌,  
-<font color='ff0000'> 픽셀 간의 밝기 변화를 비동기적(asynchronously)으로 측정하고 기록하는 카메라</font> 이다.   
+<font color='ff0000'> 픽셀 간의 밝기 변화를 비동기적(asynchronously)으로 측정하고 기록하는 카메라</font>이다.   
 
 이벤트 카메라는 기존의 카메라(traditional camera)와 비교했을 때 다음과 같은 장점을 지닌다.  
 
@@ -118,7 +118,7 @@ Model-free approach에서는 Geometric, temporal, photometric-based의 loss func
 
 - **Voxel Grid** : Event data를 3차원 histogram으로 표시하려면 Voxel을 이용하는 방법도 있다. Voxel을 이용하면 시간적인 정보(temporal information)를 표현하는데 효과적이다. 각각의 event들이 voxel을 이용해서 축척될 수도 있고, kernal을 사용할 수도 있다.  
 
-- **3D point set** : Voxel과 비슷하게 3차원 point들의 집합으로 event data를 표현할 수 있다. 이렇게 표현할 경우 $(x_k, y_k, t_k) \in $  $\R^3$으로 쓸 수 있고, point cloud를 처리하는 방식도 Event data에 적용을 해볼 수가 있다.  
+- **3D point set** : Voxel과 비슷하게 3차원 point들의 집합으로 event data를 표현할 수 있다. 이렇게 표현할 경우 $(x_k, y_k, t_k) \in $  ${\R}^3$으로 쓸 수 있고, point cloud를 처리하는 방식도 Event data에 적용을 해볼 수가 있다.  
 
 - **Point sets on Image plane** : Event data들은 이미지 평면에서 2D points들의 집합으로 간주될 수 있습니다. ICP와 mean-shift algorithm 등 shape tracking 방법을 사용할 때 표현하는 방법이다.  
 
