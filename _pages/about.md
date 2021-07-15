@@ -8,7 +8,7 @@ layout: single
 ## Hello, This is TaeYoung Kim! 🖐️
 
 
-I start my Tech's blog to record and share what I have learned.  
+I start my Tech blog to record and share what I have learned.  
 
 My research interests are **SLAM, Robotics, Object Detection, and Segmentation**,  
 also I have interested in any other Computer Vision and Autonomous Driving problem.  
