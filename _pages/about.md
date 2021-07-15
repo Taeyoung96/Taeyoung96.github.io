@@ -5,12 +5,17 @@ layout: single
 
 ---
 
+### Hello, This is TaeYoung Kim! 🖐️
+
+I start my Tech's blog to record and share what I have learned.  
+
+My research interests are **SLAM, Robotics, Object Detection, and Segmentation**,  
+also I have interested in any other Computer Vision and Autonomous Driving problem.  
+
+I want to make a great impact on many people with my positive energy.
+Also, I would like to participate in changing the world with advanced robotics technology.    
+
+If you want to know more about me, click my [CV](https://github.com/Taeyoung96/TaeyoungKim_CV/blob/master/TaeyoungKim_CV.pdf) or [Github](https://github.com/Taeyoung96).  
 
 
-**SLAM & Computer Vision**에 관심이 많은 학생입니다.    
-
-제가 배운 것을 기록하고 공유하기 위해 블로그를 시작하게 되었습니다. 😄  
-
-
-저에 대해 궁금하신 분들은 [CV](https://github.com/Taeyoung96/TaeyoungKim_CV/blob/master/TaeyoungKim_CV.pdf) 및 [Github](https://github.com/Taeyoung96)을 참고해주세요!  
 
