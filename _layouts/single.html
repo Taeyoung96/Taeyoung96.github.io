@@ -50,6 +50,22 @@ layout: default
         {% endif %}
         {{ content }}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+      
+        <!-- 포스팅 후 광고 넣기 , 출처 : https://shryu8902.github.io/jekyll/adsense/ -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- gpage.taeyoung96 -->
+        <div align="center" style="margin: 1em 0;">
+          <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-3886880548487088"
+              data-ad-slot="7487712129"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+        </div>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
       </section>
 
       <footer class="page__meta">
