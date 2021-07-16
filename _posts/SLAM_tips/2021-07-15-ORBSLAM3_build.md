@@ -106,11 +106,19 @@ OpenCV 버전 문제인 것으로 생각이 든다.
 
 문제를 해결하기 위해 `/src/` 폴더에 있는 `LocalMapping.cc`에서 Line 628번째에 있는  
 `x3D = x3D_h.get_minor<3,1>(0,0) / x3D_h(3);` 를 주석 처리하고,  
-그 밑에 Line에 `x3D = cv::Matx31f(x3D_h.get_minor<3,1>(0,0)(0) / x3D_h(3), x3D_h.get_minor<3,1>(0,0)(1) / x3D_h(3), x3D_h.get_minor<3,1>(0,0)(2) / x3D_h(3));` 를 추가하자.  
+그 밑에 Line에 
+```cpp
+x3D = cv::Matx31f(x3D_h.get_minor<3,1>(0,0)(0) / x3D_h(3), x3D_h.get_minor<3,1>(0,0)(1) / x3D_h(3), x3D_h.get_minor<3,1>(0,0)(2) / x3D_h(3));
+```
+ 를 추가하자.  
 
 또 `/src/CameraModels/` 폴더에 있는 `KannalaBrandt8.cpp`에서 Line 534번째에 있는  
 `x3D = x3D_h.get_minor<3,1>(0,0) / x3D_h(3);` 를 주석 처리하고, 동일하게  
-그 밑에 Line에 `x3D = cv::Matx31f(x3D_h.get_minor<3,1>(0,0)(0) / x3D_h(3), x3D_h.get_minor<3,1>(0,0)(1) / x3D_h(3), x3D_h.get_minor<3,1>(0,0)(2) / x3D_h(3));` 를 추가하자.  
+그 밑에 Line에 
+```cpp
+x3D = cv::Matx31f(x3D_h.get_minor<3,1>(0,0)(0) / x3D_h(3), x3D_h.get_minor<3,1>(0,0)(1) / x3D_h(3), x3D_h.get_minor<3,1>(0,0)(2) / x3D_h(3));
+```
+를 추가하자.  
 
 그리고 Build를 다시 진행해주면 되는데 주의할 점이 있다.  
 
@@ -122,9 +130,9 @@ OpenCV 버전 문제인 것으로 생각이 든다.
 
 다음과 같이 빌드가 완료됐다는 문구가 보일 것이다.  
 
-빌드 성공이다! :satisfied:  
+빌드 성공이다! 😃  
 
-:exclamation: 오류를 수정하여 fork를 한 내 [ORB_SLAM3](https://github.com/Taeyoung96/ORB_SLAM3)에 update를 해두었다. 바로 이 repository를 사용하면 오류를 수정할 필요가 없어진다.  
+❗ 오류를 수정하여 fork를 한 내 [ORB_SLAM3](https://github.com/Taeyoung96/ORB_SLAM3)에 update를 해두었다. 바로 이 repository를 사용하면 오류를 수정할 필요가 없어진다.  
 
 ## 데이터셋을 이용한 코드 실행하기  
 
@@ -175,7 +183,9 @@ ORB SLAM3를 실행할 때는 다음과 같은 규칙으로 command를 입력하
 `ORB_SLAM3` 폴더에서 `Examples` 폴더로 경로를 이동 후, (`~/Desktop/ORB_SLAM3/Examples$ `)  
 다음과 같이 command를 입력하자.  
 
-`./Monocular/mono_euroc ../Vocabulary/ORBvoc.txt ./Monocular/EuRoC.yaml ../DataSets/EuRoC/MH01/ ./Monocular/EuRoC_TimeStamps/MH01.txt`  
+```bash
+./Monocular/mono_euroc ../Vocabulary/ORBvoc.txt ./Monocular/EuRoC.yaml ../DataSets/EuRoC/MH01/ ./Monocular/EuRoC_TimeStamps/MH01.txt
+```  
 
 실행시키면 다음과 같은 결과를 볼 수 있다.  
 
@@ -186,7 +196,9 @@ ORB SLAM3를 실행할 때는 다음과 같은 규칙으로 command를 입력하
 위와 마찬가지로 경로를 `~/Desktop/ORB_SLAM3/Examples$`로 이동 후,  
 다음과 같이 command를 입력하자.  
 
-`./Monocular-Inertial/mono_inertial_euroc ../Vocabulary/ORBvoc.txt ./Monocular-Inertial/EuRoC.yaml ../DataSets/EuRoC/MH01/ ./Monocular-Inertial/EuRoC_TimeStamps/MH01.txt`  
+```bash
+./Monocular-Inertial/mono_inertial_euroc ../Vocabulary/ORBvoc.txt ./Monocular-Inertial/EuRoC.yaml ../DataSets/EuRoC/MH01/ ./Monocular-Inertial/EuRoC_TimeStamps/MH01.txt
+```  
 
 결과 사진은 다음과 같다.  
 
@@ -198,7 +210,9 @@ mode만 바뀌었다.
 
 위와 같은 경로, 그리고 command는 다음과 같이 입력하자.  
 
-`./Stereo/stereo_euroc ../Vocabulary/ORBvoc.txt ./Stereo/EuRoC.yaml ../DataSets/EuRoC/MH01/ ./Stereo/EuRoC_TimeStamps/MH01.txt`  
+```bash
+./Stereo/stereo_euroc ../Vocabulary/ORBvoc.txt ./Stereo/EuRoC.yaml ../DataSets/EuRoC/MH01/ ./Stereo/EuRoC_TimeStamps/MH01.txt
+```  
 
 결과 사진은 다음과 같다.  
 
@@ -210,7 +224,9 @@ mode만 바뀌었다.
 
 command는 다음과 같이 입력을 해주면 된다.  
 
-`./Stereo-Inertial/stereo_inertial_euroc ../Vocabulary/ORBvoc.txt ./Stereo-Inertial/EuRoC.yaml ../DataSets/EuRoC/MH01/ ./Stereo-Inertial/EuRoC_TimeStamps/MH01.txt`  
+```bash
+./Stereo-Inertial/stereo_inertial_euroc ../Vocabulary/ORBvoc.txt ./Stereo-Inertial/EuRoC.yaml ../DataSets/EuRoC/MH01/ ./Stereo-Inertial/EuRoC_TimeStamps/MH01.txt
+```  
 
 결과 사진은 다음과 같다.  
 
@@ -242,7 +258,9 @@ V202 폴더엔 Vicon Room2 02에 대한 파일, V203 폴더엔 Vicon Room 2 03�
 데이터 셋이 모두 준비가 되었다면 다시 경로를  
 `~/Desktop/ORB_SLAM3/Examples$ ` 로 이동 후, 다음과 같이 command를 입력한다.  
 
-`./Stereo/stereo_euroc ../Vocabulary/ORBvoc.txt ./Stereo/EuRoC.yaml ../DataSets/EuRoC/V201/ ./Stereo/EuRoC_TimeStamps/V201.txt ../DataSets/EuRoC/V202/ ./Stereo/EuRoC_TimeStamps/V202.txt ../DataSets/EuRoC/V203/ ./Stereo/EuRoC_TimeStamps/V203.txt`  
+```bash
+./Stereo/stereo_euroc ../Vocabulary/ORBvoc.txt ./Stereo/EuRoC.yaml ../DataSets/EuRoC/V201/ ./Stereo/EuRoC_TimeStamps/V201.txt ../DataSets/EuRoC/V202/ ./Stereo/EuRoC_TimeStamps/V202.txt ../DataSets/EuRoC/V203/ ./Stereo/EuRoC_TimeStamps/V203.txt
+```  
 
 모두 한 줄에 입력해야 하는 것을 주의하자!  
 
@@ -255,5 +273,5 @@ Multi session의 경우, 부분적으로 Map을 여러개 만들어 놓았다가
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/125936932-d8ffabbe-1f58-4ff7-a2cd-2bc6c9eb6ab1.png" width = "500" ></p>  
 
 이렇게 Dataset을 활용한 ORB SLAM3 코드를 실행해봤다.  
-직접 코드로 돌려보니 또 새로운 느낌을 받았다. :smiley:  
+직접 코드로 돌려보니 또 새로운 느낌을 받았다. 👍   
 
