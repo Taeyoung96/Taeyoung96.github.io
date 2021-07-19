@@ -124,6 +124,8 @@ x3D = cv::Matx31f(x3D_h.get_minor<3,1>(0,0)(0) / x3D_h(3), x3D_h.get_minor<3,1>(
 
 **Build를 다시 진행할 때 `Thirdparty` 폴더에 있는 `DBoW2` 와 `g2o` 폴더에 각각 `build` 폴더를 삭제해준 후 다시 빌드를 진행해야 한다.**  
 
+(다시 확인해보니, 굳이 폴더를 삭제해줄 필요는 없다. 😅)  
+
 빌드를 다시 진행해보면  
 
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/125924757-c832b4b7-e948-4383-a868-42d525439da2.png" width = "600" ></p>  
@@ -273,5 +275,73 @@ Multi session의 경우, 부분적으로 Map을 여러개 만들어 놓았다가
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/125936932-d8ffabbe-1f58-4ff7-a2cd-2bc6c9eb6ab1.png" width = "500" ></p>  
 
 이렇게 Dataset을 활용한 ORB SLAM3 코드를 실행해봤다.  
-직접 코드로 돌려보니 또 새로운 느낌을 받았다. 👍   
+
+
+## Evaluation Code 돌려보기  
+
+ORB_SLAM3 v0.4 부터는 evaluation에 대한 코드도 제공한다.  
+
+Readme.md에 설명이 자세히 나와있기 하지만, 내가 돌려봤던 코드를 정리하고자 글을 남겨보려 한다.  
+
+Readme.md에 나와있는 EuRoC Dataset을 활용한 [설명](https://github.com/UZ-SLAMLab/ORB_SLAM3#evaluation)을 기준으로 evaluation 코드를 실행해보도록 하겠다.  
+
+먼저 터미널에서 경로는 다음과 같이 설정해준다.  
+
+`~/Desktop/ORB_SLAM3/Examples$`  
+
+그 다음 Readme.md에 나와있는대로 다음과 같은 명령어로 실행하면,  
+```
+python ../evaluation/evaluate_ate_scale.py ../evaluation/Ground_truth/EuRoC_left_cam/MH01_GT.txt f_dataset-MH01_stereo.txt --plot MH01_stereo.pdf
+```
+
+다음과 같은 오류가 뜨는 것을 볼 수 있다.  
+
+```
+Traceback (most recent call last):
+  File "../evaluation/evaluate_ate_scale.py", line 151, in <module>
+    second_list = associate.read_file_list(args.second_file, False)
+  File "/home/taeyoung/Desktop/ORB_SLAM3/evaluation/associate.py", line 64, in read_file_list
+    file = open(filename)
+IOError: [Errno 2] No such file or directory: 'f_dataset-MH01_stereo.txt'
+```
+
+Readme.md에서 하라는대로 했는데 왜 안되지 싶었다. 😑  
+
+확인을 해보니, `f_dataset-MH01_stereo.txt`를 직접 만들고 만들어진 `.txt`파일을 argument로 넣어주어야 한다.  
+
+`f_dataset-MH01_stereo.txt`는 ORB SLAM3를 돌리면 만들어지는 'CameraTrajectory.txt'를 의미한다.  
+
+먼저 'Stereo-Inertial' 모드를 실행시켜, 'CameraTrajectory.txt'를 만든다.  
+.txt가 만들어진 경로는 `~/Desktop/ORB_SLAM3/Examples$` 이다.  
+
+그리고 나서 Evaluation code를 돌려준다.  
+
+다음과 같이 command를 입력해준다.  
+
+```
+python ../evaluation/evaluate_ate_scale.py ../evaluation/Ground_truth/EuRoC_left_cam/MH01_GT.txt CameraTrajectory.txt --plot MH01_stereo.pdf
+```
+
+그 결과 터미널 창에  
+`0.068498,1.011646,0.047055` 이렇게 숫자가 출력되고,  
+`MH01_stereo.pdf`라는 pdf 파일이 생긴 것을 볼 수 있다.  
+
+숫자의 의미는 trans_error , scale, trans_error_GT이다.  
+
+trans_error는 예측 값에서 하나의 point와 Ground truth의 하나의 point를 비교하여 Translation error를 표현한 것이다. trans_error에서 scale 값을 곱한 것이 trans_error_GT이다.  
+
+`evaluate_ate_scale.py`에 여러 매게변수들이 존재하니 참고하면 좋을 것이다.  
+
+내가 얻은 `MH01_stereo.pdf` 결과는 다음과 같다.  
+
+<p align="center"><img src="https://user-images.githubusercontent.com/41863759/126162863-af45de73-bb43-4b3d-b17a-9dc783d5f4fd.png" width = "500" ></p>  
+
+직접 코드로 돌려보니 또 새로운 느낌을 받았다. 👍  
+
+
+
+
+
+
+
 
