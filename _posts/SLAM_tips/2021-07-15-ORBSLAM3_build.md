@@ -238,9 +238,9 @@ Multi-session은 따로 존재하는 mode라기 보단 여러 sequence의 데이
 
 여러 Dataset을 실행시키기 위해 간단하게 다음과 같은 Rule을 이용하여 command를 작성해보자.  
 
-> **[실행하고자 하는 Mode] [장소 인식에 필요한 Vocabulary.txt] [Dataset에 맞는 파라미터를 넣어주기 위한 yaml파일]  [데이터셋 sequence2 경로] [데이터셋 sequence2에 맞는 Timestamp.txt] [데이터셋 sequence3 경로] [데이터셋 sequence3에 맞는 Timestamp.txt]**  
+> **[실행하고자 하는 Mode] [장소 인식에 필요한 Vocabulary.txt] [Dataset에 맞는 파라미터를 넣어주기 위한 yaml파일] [데이터셋 sequence1 경로] [데이터셋 sequence1에 맞는 Timestamp.txt]   [데이터셋 sequence2 경로] [데이터셋 sequence2에 맞는 Timestamp.txt] [데이터셋 sequence3 경로] [데이터셋 sequence3에 맞는 Timestamp.txt]**  
 
-되게 복잡한 듯 보이지만 사실 실행할 sequece만 추가된 것이다.  
+되게 복잡한 듯 보이지만 사실 실행할 sequece와 Timestamp만 추가된 것이다.  
 
 우선 Multi-session을 돌리기 위해 다시 Dataset을 다운 받자.  
 
