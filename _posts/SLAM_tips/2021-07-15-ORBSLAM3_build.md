@@ -11,7 +11,7 @@ comments: true
 ---  
 Ubuntu 18.04에서 ORB-SLAM3를 빌드 및 실행해보자!  
 
-좋은 기회로 ORB SLAM3를 스터디할 기회가 생겼다.  
+좋은 기회로 [ORB SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)를 스터디할 기회가 생겼다.  
 
 스터디를 진행하기 전 먼저 내 Local computer에서 돌려보려 하는데,  
 역시 한번에 빌드가 되지 않아 정리를 하려고 한다.  
@@ -69,7 +69,7 @@ sudo make install
 
 Pangolin 빌드까지 완료하였다면, 이제 전체적인 빌드를 진행해보자.  
 
-터미널에서 `cd ..`를 두번 눌러 경로를 다음과 같이 수정하자.  
+터미널에서 `cd ..`를 세번 눌러 경로를 다음과 같이 수정하자.  
 
 `~/Desktop/ORB_SLAM3$`  
 
