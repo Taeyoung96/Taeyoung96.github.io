@@ -6,4 +6,4 @@ author_profile: true
 taxonomy: Research
 ---
 
-관심 연구 분야에 대한 정리를 해보았습니다.
+SLAM 및 Robotics와 관련된 연구 분야에 대한 정리를 해보았습니다.  
