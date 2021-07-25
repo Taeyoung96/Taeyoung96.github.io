@@ -12,7 +12,7 @@ side:
     children:
       - title: "CS231n Summary"
         url: /categories/CS231n/
-      - title: "Paper Review"
+      - title: "Research"
         url: /categories/Paper_Review/
       - title: "Development Tip"
         url: /categories/Computer_vision/
