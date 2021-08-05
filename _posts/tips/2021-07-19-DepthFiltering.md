@@ -66,7 +66,7 @@ Depth filtering은 Post-precessing filter이고, Noise를 제거해주며, Depth
 
 마지막으로 알아볼 Filter는 'Holes Filling filter'이다.  
 
-이 필터를 적용하면 Depth data를 얻지 못한 곳에서 주위 pixel 값을 활용하여 Outlier를 보정하는 필터이다.  
+이 필터를 적용하면 **Depth data를 얻지 못한 곳에서 주위 pixel 값을 활용하여 Outlier를 보정하는 Filter**이다.  
 
 가까운 위치에 있는 pixel에서 값을 보정할 것인지, 먼 위치에 있는 pixel에서 값을 보정할 것인지 Parameter를 통해 정할 수 있다.  
 
