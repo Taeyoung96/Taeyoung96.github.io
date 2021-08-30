@@ -32,11 +32,7 @@ Git은 버전 관리를 위한 하나의 Tool이다. 오픈소스 프로젝트�
 
 우선 우리가 오픈소스를 참여하고자 할 때, 모든 소스 파일을 전부 이해하기란 사실상 불가능에 가까울 것이다. <u>우선 오픈소스에서 핵심적인 Contributor를 파악하는 것이 중요하다.</u> 그 사람이 가장 오픈소스에 대해서 많은 이해를 하고 있을 가능성이 높기 때문이다.  
 
-<<<<<<< HEAD
 터미널을 이용하여 다음과 같은 명령어를 활용하여 오픈소스를 읽어보자.  
-=======
-터미널을 활용하여 다음과 같은 명령어를 활용하여 오픈소스를 읽어보자.  
->>>>>>> 73a5a073c90b922d03432d4c083eddf8aef977ac
 
 1. 오픈소스에서 누가 가장 개발을 많이 했는지 확인  
     - `$ git shortlog -sn | nl` : nl은 파일의 line number 명시 (순위표시용으로 사용)  
@@ -95,7 +91,6 @@ git log라는 명령어를 활용하면 Commit을 할 때 ID 그리고 commit me
 
 Add, Commit, Push 말고도 오픈소스에 참여를 하다보면 자주 쓰이는 Git 명령어가 있다.  
 
-<<<<<<< HEAD
 첫번째로 알아볼 명령어는 `rebase`이다.  
 
 Rebase는 merge와 비슷하게 branch를 합칠 때 많이 사용하게 되는데 Commit history를 좀 더 깔끔하게 남기 때문에 다른 작업자들이 Commit history를 볼 때 조금 더 수월하게 볼 수 있다는 장점이 있다.  
@@ -207,48 +202,6 @@ Stash에 대한 자세한 설명은 아래의 블로그를 참고해보자.
 상황별로 친절히 어떤 명령어를 사용하는지 잘 정리된 블로그도 있어 한번 보면 좋을 것 같다.  
 
 - [Git 상황별 자주쓰는 명령어 정리](https://steemit.com/kr/@yjiq150/git)  
-=======
-우선, 오픈소스 프로젝트 기여를 할 때는 **새로운 Branch를 생성해서 소스코드를 바꾼 후,  
-Add, Commit을 진행하자.**  
-
-만약 Push를 진행하려고 할 때, 
-```
-! [rejected] master -> master (fetch first)
-error: failed to push some refs to 'https://github.com/dalso~~'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull …') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-```
-
-다음과 같은 에러가 뜬다면, Base에 대한 동기화가 필요한 경우다.  
-
-`git pull`을 활용할 수도 있지만, `fetch`와 `rebase`를 활용하여 fork 뜬 repository를 동기화를 시킬 수도 있다.  
-
-```
-# 공식 upstream 저장소에서 최신 commit history 가져오기     
-$ git fetch upstream master
-
-# 최신 commit history 기준으로 베이스 갱신 (rebase)
-$ git rebase upstream/master
-
-# Fork 한 저장소(GitHub)도 수정하기 (PR 자동 갱신) 
-$ git push --force origin master
-```
-
-Commit을 쪼개거나 합칠때도 `rebase`라는 명령어가 사용된다.  
-
-예제를 활용하여 rebase를 좀 더 이해해보자.  
-
-
-
-
-
-정리를 잘해둔 [블로그 - Git 상황별 자주쓰는 명령어 정리](https://steemit.com/kr/@yjiq150/git)가 있으니 참고해보자.  
-또한 오픈소스 프로젝트에 PR을 보낼 때, 그 과정에 대해 잘 나타낸 [블로그 - git 초보를 위한 풀리퀘스트(pull request) 방법](https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/)도 있으니 참고해보자.  
->>>>>>> 73a5a073c90b922d03432d4c083eddf8aef977ac
-
 
 
 
