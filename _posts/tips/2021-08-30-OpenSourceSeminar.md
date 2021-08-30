@@ -32,7 +32,7 @@ Git은 버전 관리를 위한 하나의 Tool이다. 오픈소스 프로젝트�
 
 우선 우리가 오픈소스를 참여하고자 할 때, 모든 소스 파일을 전부 이해하기란 사실상 불가능에 가까울 것이다. <u>우선 오픈소스에서 핵심적인 Contributor를 파악하는 것이 중요하다.</u> 그 사람이 가장 오픈소스에 대해서 많은 이해를 하고 있을 가능성이 높기 때문이다.  
 
-터미널을 활용하여 다음과 같은 명령어를 활용하여 오픈소스를 읽어보자.  
+터미널을 이용하여 다음과 같은 명령어를 활용하여 오픈소스를 읽어보자.  
 
 1. 오픈소스에서 누가 가장 개발을 많이 했는지 확인  
     - `$ git shortlog -sn | nl` : nl은 파일의 line number 명시 (순위표시용으로 사용)  
@@ -91,45 +91,117 @@ git log라는 명령어를 활용하면 Commit을 할 때 ID 그리고 commit me
 
 Add, Commit, Push 말고도 오픈소스에 참여를 하다보면 자주 쓰이는 Git 명령어가 있다.  
 
-우선, 오픈소스 프로젝트 기여를 할 때는 **새로운 Branch를 생성해서 소스코드를 바꾼 후,  
-Add, Commit을 진행하자.**  
+첫번째로 알아볼 명령어는 `rebase`이다.  
 
-만약 Push를 진행하려고 할 때, 
-```
-! [rejected] master -> master (fetch first)
-error: failed to push some refs to 'https://github.com/dalso~~'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull …') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-```
+Rebase는 merge와 비슷하게 branch를 합칠 때 많이 사용하게 되는데 Commit history를 좀 더 깔끔하게 남기 때문에 다른 작업자들이 Commit history를 볼 때 조금 더 수월하게 볼 수 있다는 장점이 있다.  
 
-다음과 같은 에러가 뜬다면, Base에 대한 동기화가 필요한 경우다.  
+실습을 통해 rebase에 대한 감을 잡을 수 있었다.  
 
-`git pull`을 활용할 수도 있지만, `fetch`와 `rebase`를 활용하여 fork 뜬 repository를 동기화를 시킬 수도 있다.  
+**상황 1 : 가장 오래된 역사 부터 두번째 commit 이후에 새로운 커밋 commit 3개 넣기**  
 
 ```
-# 공식 upstream 저장소에서 최신 commit history 가져오기     
-$ git fetch upstream master
+# 가장 오래된 commit 두번째로 되감기 
+# 두번째로 가장 오래된 commit 의 "pick" 글자를 "edit" 으로 수정하기
+# nano 편집기 저장: ctrl + o 
+# nano 편집기 나가기: ctrl + x
+$ git rebase -i --root  
 
-# 최신 commit history 기준으로 베이스 갱신 (rebase)
-$ git rebase upstream/master
+# 새로운 파일 'hello_1.c'를 만든 후 Add, Commit
+$ touch hello_1.c  
+$ git add hello_1.c
+$ git commit -m "test: add hello_1.c"
 
-# Fork 한 저장소(GitHub)도 수정하기 (PR 자동 갱신) 
-$ git push --force origin master
+# 새로운 파일 'hello_2.c'를 만든 후 Add, Commit
+$ touch hello_2.c  
+$ git add hello_2.c
+$ git commit -m "test: add hello_2.c"
+
+# 새로운 파일 'hello_3.c'를 만든 후 Add, Commit
+$ touch hello_3.c  
+$ git add hello_3.c
+$ git commit -m "test: add hello_3.c"
+
+# continue 옵션을 이용하여 rebase 진행
+$ git rebase --continue
+
+# 참고: rebase 과정을 취소하려면 --abort 옵션을 사용할 수 있다.  
 ```
 
-Commit을 쪼개거나 합칠때도 `rebase`라는 명령어가 사용된다.  
+**상황 2 : 상황 1에서 만든 3개를 commit을 1개로 합치기**  
 
-예제를 활용하여 rebase를 좀 더 이해해보자.  
+(1) hello_3.c 커밋과 hello_2.c 커밋을 합친다.  
+
+```
+# hello_3.c commit 의 "pick" 글자를 "edit" 으로 수정하기
+# nano 편집기 저장: ctrl + o 
+# nano 편집기 나가기: ctrl + x
+$ git rebase -i --root  
+
+# reset --soft HEAD~1 설명: --hard와는 다르게 commit 정보만 삭제하고 파일 변경분은 남겨둔다.  
+$ git reset --soft HEAD~1
+$ git status  
+
+$ git commit --amend
+$ git rebase --continue 
+
+# 결과를 확인
+$ git log --oneline  
+$ git show [합쳐진 commit ID]  
+```
+
+(2) hello_2.c 커밋과 hello_1.c 커밋을 합친다.  
+
+```
+# hello_2.c commit 의 "pick" 글자를 "edit" 으로 수정하기
+# nano 편집기 저장: ctrl + o 
+# nano 편집기 나가기: ctrl + x
+$ git rebase -i --root  
+
+# reset --soft HEAD~1 설명: --hard와는 다르게 commit 정보만 삭제하고 파일 변경분은 남겨둔다.  
+$ git reset --soft HEAD~1
+$ git status  
+
+$ git commit --amend
+$ git rebase --continue 
+
+# 결과를 확인
+$ git log --oneline  
+$ git show [합쳐진 commit ID]  
+```
+
+Rebase에 대한 자세한 설명은 아래의 블로그를 참고해보자.  
+
+- [Git Rebase (1)](https://suhwan.dev/2018/01/21/Git-Rebase-1/)  
+- [rebase 로 병합하기](https://backlog.com/git-tutorial/kr/stepup/stepup2_8.html)  
+- [3.6 Git 브랜치 - Rebase 하기](https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0)  
+
+---
 
 
+두번째로 알아볼 명령어는 `stash`다.  
+
+파일을 잠깐 수정을 하고, Commit log를 수정하고 싶은 일이 있을 때 유용하게 사용할 수 있는 명령어이다.  
+
+`git stash`를 이용하면 불필요한 commit이나 branch를 새로 만들 일이 없다.  
+
+Stash에 대한 자세한 설명은 아래의 블로그를 참고해보자.  
+- [git stash 사용법 - 현재 상태를 저장해보자](https://helloinyong.tistory.com/202)  
 
 
+---  
 
-정리를 잘해둔 [블로그 - Git 상황별 자주쓰는 명령어 정리](https://steemit.com/kr/@yjiq150/git)가 있으니 참고해보자.  
-또한 오픈소스 프로젝트에 PR을 보낼 때, 그 과정에 대해 잘 나타낸 [블로그 - git 초보를 위한 풀리퀘스트(pull request) 방법](https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/)도 있으니 참고해보자.  
+마지막으로 알아볼 명령어는 `blame`이다.  
+
+`git blame`을 활용하면 해당 소스라인 대해서 누가 마지막으로 수정을 했는지 commit ID 추적이 가능하다.  
+
+만약 내가 기여를 원하는 함수가 있다면, 이 함수를 누가 언제 만들었는지 알 수 있다는 뜻이다.  
+
+마찬가지로 아래의 블로그에 설명이 자세히 나와있으니 참고해보자.  
+- [Git - blame 명령어](https://codechacha.com/ko/git-blame/)  
+
+상황별로 친절히 어떤 명령어를 사용하는지 잘 정리된 블로그도 있어 한번 보면 좋을 것 같다.  
+
+- [Git 상황별 자주쓰는 명령어 정리](https://steemit.com/kr/@yjiq150/git)  
 
 
 
