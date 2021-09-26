@@ -35,7 +35,7 @@ Git은 버전 관리를 위한 하나의 Tool이다. 오픈소스 프로젝트�
 터미널을 이용하여 다음과 같은 명령어를 활용하여 오픈소스를 읽어보자.  
 
 1. 오픈소스에서 누가 가장 개발을 많이 했는지 확인  
-    - `$ git shortlog -sn | nl` : nl은 파일의 line number 명시 (순위표시용으로 사용)  
+    - `git shortlog -sn | nl` : nl은 파일의 line number 명시 (순위표시용으로 사용)  
 
 2. 개발자별 commit 개수 요약  
     - `git shortlog -h | grep summary`  
