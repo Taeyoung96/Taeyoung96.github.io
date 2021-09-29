@@ -22,6 +22,8 @@ fatal: Authentication failed for 'https://github.com/Taeyoung96/SLAM-Resources-f
 
 Github ID가 아닌 token을 활용해서 Push를 진행해야한다.  
 
+## Github Token 생성하기  
+
 우선 Github에 들어가서 Token을 생성하자.  
 
 Token을 생성하는 법은 아래의 블로그를 참고하면 쉽게 만들 수 있다.  
@@ -35,6 +37,8 @@ Personal Access Token에서 Token을 Copy하자.
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/135227288-bb97c0b8-29d2-4609-a4c6-3bb5d3fcc8e8.png" width = "500" ></p>
 
 **Token 번호는 한번 밖에 보이지 않으니 꼭 복사를 하자!**  
+
+## Token 번호를 활용하여 git remote 등록하기
 
 터미널에서 token 번호를 이용하여 다시 저장소를 지정하자!  
 
