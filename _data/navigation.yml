@@ -17,7 +17,7 @@ side:
       - title: "Development Tip"
         url: /categories/Computer_vision/
   
-  - title: SLAM
+  - title: Robotics
     children:
       - title: "SLAM DUNK2 Summary"
         url: /categories/Slam/
@@ -28,7 +28,7 @@ side:
   
   - title: Mathematics
     children:
-      - title: "Linear Algebra"
+      - title: "Mathematics"
         url: /categories/mathematics/
 
   - title: Tips

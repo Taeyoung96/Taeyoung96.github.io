@@ -1,5 +1,5 @@
 ---
-title: "SLAM Summary"
+title: "SLAM Dunk2 Summary"
 permalink: /categories/Slam/
 layout: category
 author_profile: true
