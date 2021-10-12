@@ -1,7 +1,7 @@
 ---
 title : "[2021 오픈소스 컨트리뷰션] Open Source 참여 및 협업을 위한 Github Tip"
 category :
-    - tips
+    - Dailytips
 tag :
     - OpenSource
     - tips
