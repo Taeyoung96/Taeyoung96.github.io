@@ -12,11 +12,11 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "ko"
-title                    : "TaeYoung's Blog"
+title                    : "Robotics & Perception Engineer"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Taeyoung Kim"
@@ -94,7 +94,7 @@ analytics:
 author:
   name             : "TaeYoung Kim"
   avatar           : "https://user-images.githubusercontent.com/41863759/80867691-7c04d880-8cd0-11ea-8bc3-33cdab50c217.jpg"
-  bio              : "Robotics & Perception"
+  bio              : ""
   # location         : "Seoul, South Korea"
   email            :
   links:
