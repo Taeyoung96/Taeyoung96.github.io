@@ -31,6 +31,11 @@ side:
     children:
       - title: "Mathematics"
         url: /categories/mathematics/
+  
+  - title: Programming
+    children:
+      - title: "따베씨++ 정리"
+        url: /categories/ddabessi/
 
   - title: Tips
     children:
