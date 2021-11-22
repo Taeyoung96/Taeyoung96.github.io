@@ -1,5 +1,5 @@
 ---
-title: "따베씨++ 정리"
+title: "따배씨++ 정리"
 permalink: /categories/ddabessi/
 layout: category
 author_profile: true
