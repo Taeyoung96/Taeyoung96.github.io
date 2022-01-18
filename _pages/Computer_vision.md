@@ -1,5 +1,5 @@
 ---
-title: "Development Tip"
+title: "Computer vision development Tip"
 permalink: /categories/Computer_vision/
 layout: category
 author_profile: true

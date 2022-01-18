@@ -3,7 +3,8 @@ title : "[Paper Review] Event camera survey 요약 (1)"
 category :
     - Research
 tag :
-    - Event camera
+    - Event camera  
+    - Paper_Review
 toc : true
 toc_sticky: true
 comments: true

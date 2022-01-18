@@ -1,5 +1,5 @@
 ---
-title: "SLAM Development Tip"
+title: "SLAM & Robotics development tip"
 permalink: /categories/SlamTip/
 layout: category
 author_profile: true
