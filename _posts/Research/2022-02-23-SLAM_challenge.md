@@ -153,10 +153,39 @@ Stereo Track에서도 비슷한 솔루션을 가져갔다.
 ### 2등 솔루션  
 
 2등 솔루션은 논문으로 작성이 되어있고 Github에 코드도 공개가 되어있다.  
+논문은 CVPR 2020에 accept 되었다.  
 
 논문 제목은 **"VOLDOR: Visual Odometry from Log-logistic Dense Optical flow Residuals"** 이다.  
 
 조금 더 자세한 내용을 알고 싶으면 논문 및 코드를 참고하면 좋을 것 같다. ([AriXiv](https://arxiv.org/abs/2104.06789) , [Code](https://github.com/htkseason/VOLDOR))  
 
+VOLDOR의 카테고리를 분류하면 Indirect method를 사용하고 Dense한 Map을 활용하여 odometry를 추정하는 방법이라고 설명한다.  
 
+VOLDOR의 Workflow를 알아보면 아래와 같다.  
+
+<p align="center"><img src="https://user-images.githubusercontent.com/41863759/155307249-efb2c56a-ea5e-4692-bfac-8cd7d15ebf59.png" width = "700" ></p>  
+
+우선 전처리 과정으로 Optical Flow와 Disparity를 얻어내야 한다.    
+
+먼저 연속적인 이미지 sequence를 Dense하게 Optical Flow를 추정하는 estimator에 넣어준 후 Optical Flow를 얻어낸다.  
+
+Depth map은 Input으로 넣어주는 Disparity를 통해 얻어낸다.  
+
+이렇게 두 가지 Input을 가지고, Dense한 Optical flow와 rigid flow를 최소화 하는 것을 목표로 한다. Rigid flow는 Camera pose를 활용해서 warping된 Depth map을 통해 얻는다.  
+
+여기서 발표자가 말하는 Rigid flow라는 말이 너무 이해가 안되서 논문도 찾아보고 주관적인 의견을 덧붙여 정리를 하자면, Optical Flow는 보통 연속 되는 두 이미지에서 얻어내는데 이때 움직이는 물체가 있을 경우, 추정하는 optical flow값이 완전히 바뀌게 된다. 따라서 <u>얼마나 정적인 환경에서 얻어낸 Optical flow 값인가를 확률적으로 나타내고 이를 pixel마다 각각 나타내 하나의 Dense한 Optical Flow와 비슷하게 2D 이미지처럼 얻어낸 것이 Rigid flow</u>라고 이야기를 하는 것 같다.  
+
+Dense한 Optical flow와 rigid flow의 차이를 Rigidness map이라고 하여 얻어낸 다음, Fisk Residual Model에 넣어준다. Fisk Residual Model은 deep learning model이 아니라 확률밀도함수(PDF)와 같은 확률론적인 모델이다. 다만 여기서 쓰이는 파라미터들이 Optical flow estimation에서 쓰이는 학습된 파라미터들이다.      
+
+Fisk Residual Model의 output을 활용해서 Depth map, Rigidness Map을 update하고, camera pose도 update하는 식으로 Visual odometry를 계산하는 것이다.  
+
+Depth map을 업데이트 할 때는 Sampling을 진행하고 propagation 방법을 활용하여 업데이트를 진행한다. Maximum Inlier Estimation이라는 수식을 제안하는데 Rigidness map을 활용해서 조금더 매끄러운 Depth map을 얻고자 했다. (사실 수식이 정확하게 어떤 것을 이야기 하고 있는지는 조금 더 봐야 할 것 같다.)  
+
+Rigidness Map을 업데이트 할 때는 Markov chain smoothing이라는 알고리즘을 사용한다. (이 부분은 이해가 부족하다.)  
+
+Camera pose를 업데이트 할 때는 이전 time에서 얻은 Depth map을 활용하고 P3P solver를 최소화하도록 maximum a posteriori(MAP) approximation한다.  
+
+결과에 대한 지표는 따로 없고, 영상으로 발표를 마무리한다. 오른쪽 아래 보이는 그림에서 빨간색으로 나온 것이 Trajectory를 시각화 한 것이다.   
+
+<p align="center"><img src="https://user-images.githubusercontent.com/41863759/155318987-03d84836-3d46-474d-ae61-1f7aadc4a16d.png" width = "500" ></p>  
 
