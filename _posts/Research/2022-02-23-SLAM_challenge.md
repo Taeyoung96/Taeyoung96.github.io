@@ -101,3 +101,62 @@ Baseline Code로는 ORB-SLAM이 제공되고 평가 지표는 다음과 같다.
 
 ## 대회 솔루션  
 
+트랙은 Monocular 그리고 Stereo, 두 트랙으로 나누어 진행을 했지만 우승자는 동일한 팀이였다.  
+
+솔루션에 대한 영상은 [CVPR SLAM Challenge Awards Ceremony](https://youtu.be/jNhPD4oO6xA)에서 확인할 수 있다.  
+
+우선 Baseline으로 제공된 ORB-SLAM의 Score와 우승자의 Score는 다음과 같다.  
+
+- **Monocular Track**
+
+||Score|Secondary Score|
+|:---:|:---:|:---:|
+|ORB-SLAM-Mono|3.57|17.7|
+|Best Team|0.34|0.45|  
+
+- **Stereo Track**
+  
+||Score|Secondary Score|
+|:---:|:---:|:---:|
+|ORB-SLAM-Stereo|1.64|2.9|
+|Best Team|0.12|0.48|  
+
+정말 엄청난 결과가 아닐 수 없다.. 😳😳  
+
+### 1등 솔루션  
+
+Mono Track에서 1등이 공개한 솔루션은 다음과 같다.  
+
+<p align="center"><img src="https://user-images.githubusercontent.com/41863759/155272135-aaf0aba0-a1b2-4fd8-95a2-9ea2100f9d96.png" width = "600" ></p>  
+
+- [COLMAP](https://colmap.github.io/)을 baseline으로 잡는다.  
+- [SuperPoint](https://github.com/rpautrat/SuperPoint)와 [SuperGlue](https://github.com/magicleap/SuperGluePretrainedNetwork)를 활용하여 특징점 추출 및 특징점 매칭  
+- 환경에 따른 Dynmaic한 Threshold 설정  
+- BoW를 활용한 Loop detection  
+
+
+
+Stereo Track에서도 비슷한 솔루션을 가져갔다.  
+<p align="center"><img src="https://user-images.githubusercontent.com/41863759/155272979-70239d09-cb2e-4e29-848f-9c1fb4876b05.png" width = "600" ></p>  
+
+- [COLMAP](https://colmap.github.io/)을 baseline으로 잡는다. 다만 기존의 COLMAP은 stereo에 대한 pipeline이 없기 때문에 아래와 같은 pipeline을 설계했다.  
+
+<p align="center"><img src="https://user-images.githubusercontent.com/41863759/155272640-31cab3e2-658c-4f9d-a1b8-17572a852787.png" width = "600" ></p>  
+
+- Monocular Track과 동일하게 [SuperPoint](https://github.com/rpautrat/SuperPoint)와 [SuperGlue](https://github.com/magicleap/SuperGluePretrainedNetwork)를 활용하여 특징점 추출 및 특징점 매칭을 진행한다.  
+- SIFT feature와 SuperPoint feature들로 Mapping을 진행한다.  
+- BoW를 활용한 Loop detection   
+
+이 저자들은 Low한 texture에서는 Line과 같은 feature를 활용하면 더욱 더 특징이 많이 추출 될 것이라고 했다. 이 솔루션의 아쉬운 점은 Offline으로 동작한다는 것이다. 1000장의 이미지를 활용해 Map을 만드는데 30분이 소요된다고 언급했다.  
+
+
+### 2등 솔루션  
+
+2등 솔루션은 논문으로 작성이 되어있고 Github에 코드도 공개가 되어있다.  
+
+논문 제목은 **"VOLDOR: Visual Odometry from Log-logistic Dense Optical flow Residuals"** 이다.  
+
+조금 더 자세한 내용을 알고 싶으면 논문 및 코드를 참고하면 좋을 것 같다. ([AriXiv](https://arxiv.org/abs/2104.06789) , [Code](https://github.com/htkseason/VOLDOR))  
+
+
+
