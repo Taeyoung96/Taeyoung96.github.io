@@ -189,3 +189,69 @@ Camera pose를 업데이트 할 때는 이전 time에서 얻은 Depth map을 활
 
 <p align="center"><img src="https://user-images.githubusercontent.com/41863759/155318987-03d84836-3d46-474d-ae61-1f7aadc4a16d.png" width = "500" ></p>  
 
+### 3등 솔루션   
+
+3등 솔루션 역시 논문으로 작성되어 있고 코드도 공개되어 있다.  
+논문은 ICRA 2021(with RA-L)에 제출되었다.  
+
+논문 제목은 **"A Fully Online and Versatile Visual SLAM for Real-Time Applications"** 이다.  
+
+조금 더 자세한 내용을 알고 싶으면 논문 및 코드를 참고하면 좋을 것 같다. ([AriXiv](https://arxiv.org/abs/2102.04060) , [Code](https://github.com/ov2slam/ov2slam))  
+
+우선 발표자의 소개를 잠깐 했는데 발표자가 소속되어 있는 ONERA( 프랑스 국립 항공우주 연구 센터)에서는 Real-time, reliability 그리고 robustness에 대해서 연구를 진행하고 있다고 이야기 했다.  
+
+따라서 이런 연구에 맞춰 새로운 SLAM system을 제시했는데 특징은 다음과 같다.  
+
+- 크게 Feature-based SLAM으로 분류 : 3개의 threads(front-end, mapping, and state estimation thread)로 구성  
+- Visual Front-end thread : 들어오는 이미지에 대해서 real time processing이 가능하도록 설계  
+- Mapping thread : real time이 나오도록 하면서 정확도를 최대로 할 수 있도록 유연하고 모듈화를 해 놓았다.  
+- State estimation thread : Keyframes와 3D map에 대해서 중복인 상태를 filtering을 진행하며 최적화(Bundle Adjustment)를 수행  
+
+자세하게 알고리즘에 대해서 알아보자.  
+
+우선 Visual Front-End thread부터 설명하면 다음과 같다.  
+
+Visual Front-End thread도 크게 4가지로 구분을 하고 있다.  
+
+- Preprocessing  
+- Tracking  
+- Pose Estimation  
+- New KeyFrame Creation  
+
+> Preprocessing 단계에서는 모든 이미지에 대해 CLAHE 알고리즘을 적용하고, coarse-to-fine tracking을 위해 Pyramid 구조를 만든다. CLAHE 알고리즘이란 Contrast Limited Adaptive Histogram Equalization의 줄임말로 간단히 설명하면 히스토그램 평활화를 할 때 이미지의 대비효과를 부각시키는 방법을 적용한 알고리즘이다. [CLAHE - 네이버 블로그](https://m.blog.naver.com/samsjang/220543360864)에 조금 더 자세한 설명이 있다.  
+
+> Tracking 단계에서는 첫번째로 이전의 camera pose의 Motion model을 이용하여 현재의 camera pose를 추정한다. 이전의 camera pose와 추정한 현재의 camera pose를 이용하여 Optical Flow tracking을 적용한다. 이 때 Lukas Kanade Method를 사용한다. 그 다음 2D-2D RANSAC filtering을 적용하여 outlier를 제거한다.  
+
+> Pose Estimation 단계에서는 첫번째로 P3P-based Pose Refinement를 진행한다. 최적화를 진행할 때 map point는 고정을 시키고 camera의 pose만 최적화를 진행한다. Non-linear optimization 방법이기 때문에 Levenberg-Marquardt 알고리즘을 적용하여 최적화를 진행한다. 미리 추정한 Pose에서 KeyPoint의 절반 미만이 성공적으로 추적이 되면 미리 추정한 Pose를 버리고, P3P RANSAC 알고리즘에서 계산된 카메라 pose를 활용한다.  
+
+> New KeyFrame Creation 단계에서는 새로운 KeyFrame을 생성하게 되는데 3D keypoints의 수가 일정 threshold보다 높거나 새로운 keypoints를 그리드 전략으로 찾게된다. 그리고 각각 keypoints들마다 Descriptor도 찾게된다.  
+
+이제 Mapping thread에 대해서 알아보자.  
+
+Mapping thread도 크게 3가지로 구분하고 있다.  
+
+- Stereo Triangulate  
+- Temporal Triangulation  
+- Local Map Tracking  
+
+> Stereo Triangulate 단계에서는 Tracking에서 사용했던 Optical Flow 방법을 동일하게 사용하고 있다. 미리 추정된 pose를 활용해서 2D-2D Epipolar filtering을 활용하고 Inliers에 대해 Triangulate를 적용하여 새로운 3D Map points를 얻게 된다.  
+
+> Temporal Triangulation 단계에서는 Monocular 모드에서 3D map을 초기화할때만 사용하거나 Stereo 모드에서 Matching이 이뤄지지 않았을 때 사용한다. Temporal Triangulation 단계에서 생성된 3D Keypoints를 활용하여 다음 단계에 카메라 pose 추정을 더 잘할 수 있게 되고, 또한 더 좋은 카메라 pose가 추정이 되면 다음 단계에 더 정확한 3D Keypoints의 위치를 얻을 수 있게 된다. 즉, 초기화를 잘 해놓으므로 선순환이 일어난다.  
+
+> Local Map Tracking 단계에서는 현재 KeyFrame이나 인접한 KeyFrame에서 보이는 3D points의 세트를 나타내는 과정이다. KeyFrame에 대해 Local map을 만들고 마지막에는 covisibility graph를 update한다. Real-time을 보장하기 위해 이 단계를 모듈화하였다.  
+
+마지막으로 State estimation thread에 대해서도 알아보자.  
+
+State estimation thread는 크게 두가지로 구분한다.  
+
+- Local Bundle Adjustment  
+- Keyframes Filtering  
+
+> Local Bundle Adjustment 단계에서는 3D Points와 Camera pose를 동시에 최적화를 수행한다. 최적화를 수행할 KeyFrames들을 고르고 KeyFrame에서 관찰되는 3D Points들을 가지고 Bundle Adjustment를 수행한다.  
+
+> Keyframes Filtering 단계에서는 covisibility graph에서 불필요한 KeyFrame들을 제거하는 역할을 수행한다. 불필요한 KeyFrame들을 제거하므로써 다음 Bundle Adjustment를 수행할 땐 조금 더 빠르게 수행을 하는 것을 목적으로 한다.  
+
+---
+
+이렇게 총 3가지의 솔루션을 요약해보았다. 개인적으로 Real-time을 만족하면서 딥러닝을 사용하지 않은 세번째 솔루션이 인상깊었다. 로봇을 고려하다보면 컴퓨팅 파워나 Real-time이 항상 고려되어야 한다고 생각하기 때문이다. 이러한 대회로 다양한 SLAM 알고리즘을 알 수 있어 흥미로웠다. 또한 TartaAir Dataset이 나오면서 SLAM에 딥러닝을 적용한 논문이 많이 나올 것으로 예상된다. 😆😆   
+

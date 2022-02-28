@@ -35,6 +35,8 @@ Only Event를 이용한 알고리즘도 있는 반면, Event와 Frame을 결합�
 
 ## Optical Flow Estimation  
 
-Optical Flow는 이미지 plane에서 Geometry나 Motion에 대한 정보 없이 물체의 Velocity를 계산하는 방법이다. 기존의 Conventional Cameras(우리가 흔히 사용하는 RGB 카메라) 같은 경우, 두 연속적인 이미지의 계산을 통해 얻을 수 있다.
+Optical Flow는 이미지 plane에서 Geometry나 Motion에 대한 정보 없이 물체의 Velocity를 계산하는 방법이다. 기존의 Conventional Cameras(우리가 흔히 사용하는 RGB 카메라) 같은 경우, 두 연속적인 이미지의 계산을 통해 얻을 수 있다.  
 
+
+**[Working in Progress...]**
 
