@@ -15,12 +15,12 @@ comments: true
 2022년을 기준으로 오픈소스로 공개된 LIO 계열 알고리즘이 많이 등장했다.  
 이쪽 연구에 관심을 가지고 시작하는 입장으로써 잘 정리된 문서가 없어 이를 정리하고자 한다.  
 
-**❗️ 공부를 이제 막 시작한 입장으로써 잘못 된 내용이 있을 수 있습니다.  
-틀린 부분이 있거나 놓친 논문이 있다면 댓글로 알려주시면 감사드리겠습니다! 😆**  
-
 최근 [Fast-LIO](https://github.com/hku-mars/FAST_LIO) 계열 시리즈가 주목을 많이 받고 있기 때문에 여기 나와 있는 Related works 및 구글링을 통해 조사를 진행했다.  
 
 논문의 핵심 아이디어만 이야기하는 식으로 정리를 하고자 한다.  
+
+**❗️ 공부를 이제 막 시작한 입장으로써 잘못된 내용이 있을 수 있습니다.  
+틀린 부분이 있거나 중요한데 놓친 논문이 있다면 댓글로 알려주시면 감사드리겠습니다! 😆**  
 
 ## LIO-Mapping (IRCA 2019)  
 - 논문 링크 : [Arxiv](https://arxiv.org/abs/1904.06993), [IRCA](https://ieeexplore.ieee.org/abstract/document/8793511?casa_token=JhE9dkqEDnIAAAAA:hM87BOCnSA7_O2QLpqzVM3fjwEX9Jb2UyG527J0nXqH8Pvt1j_uDecAADcDxWTBBliLgLnrb8r8) /  공식 페이지 - [Link](https://sites.google.com/view/lio-mapping)  
