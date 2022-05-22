@@ -15,12 +15,29 @@ comments: true
 2022년을 기준으로 오픈소스로 공개된 LIO 계열 알고리즘이 많이 등장했다.  
 이쪽 연구에 관심을 가지고 시작하는 입장으로써 잘 정리된 문서가 없어 이를 정리하고자 한다.  
 
-최근 [Fast-LIO](https://github.com/hku-mars/FAST_LIO) 계열 시리즈가 주목을 많이 받고 있기 때문에 여기 나와 있는 Related works 및 구글링을 통해 조사를 진행했다.  
-
-논문의 핵심 아이디어만 이야기하는 식으로 정리를 하고자 한다.  
+개인적인 생각으론 최근 [Fast-LIO](https://github.com/hku-mars/FAST_LIO) 계열 시리즈가 주목을 많이 받고 있기 때문에 여기 나와 있는 Related works 및 구글링을 통해 조사를 진행했다. 논문의 핵심 아이디어만 이야기하는 식으로 정리를 하고자 한다.  
 
 **❗️ 공부를 이제 막 시작한 입장으로써 잘못된 내용이 있을 수 있습니다.  
 틀린 부분이 있거나 중요한데 놓친 논문이 있다면 댓글로 알려주시면 감사드리겠습니다! 😆**  
+
+## Paper List  
+- [LIPS (IROS 2018)](#lips-iros-2018)  
+- [LIO-Mapping (IRCA 2019)](#lio-mapping-irca-2019)  
+- [LIO-SAM (IROS 2020)](#lio-sam-iros-2020)  
+- [LINS (ICRA 2020)](#lins-icra-2020)  
+- [KFS-LIO (ICRA 2021)](#kfs-lio-icra-2021)  
+- [Fast-LIO (RA-L 2021)](#fast-lio-ra-l-2021)  
+
+## LIPS (IROS 2018)  
+- 논문 링크 : [Pdf](http://udel.edu/~yuyang/downloads/geneva_iros2018.pdf), [IROS](https://ieeexplore.ieee.org/abstract/document/8594463?casa_token=hPx-fVYrhrwAAAAA:_EWIAp3SvS7rsRNDlytCkhvGhHvRYVQN2bjbSVflCouTXoyPaWMrJN_ZBrjBsBg1BHqaoaEV8Rc)  
+- 코드 공개 여부 : O ([Github](https://github.com/rpng/lips))  
+- 실험 환경 : custom LiDAR IMU simulator,  
+    Quanergy M8(LiDAR) + Microstrain 3DM-GX3-25 (IMU)  
+- **Main Contribution / Key IDEA**  
+    1. 수 많은 point cloud 중 평면(Plane)을 추출하는 방법을 채택, closest point (CP) plane 표현 방법을 새롭게 정의 및 제안  
+    2. "Continuous Preintegration Theory for Graph-based Visual-Inertial Navigation" [논문](http://udel.edu/~ghuang/papers/tr_cpi.pdf)에서 제안한 Continuous preintegration factor 사용  
+    3. Plane factors를 정의하고 graph-based optimization을 활용하여 최적화를 진행  
+    4. 과연 plane만으로 constraints를 만들고 최적화를 진행하면 정확하게 LiDAR의 pose가 추정이 될지는 의심이 든다...  
 
 ## LIO-Mapping (IRCA 2019)  
 - 논문 링크 : [Arxiv](https://arxiv.org/abs/1904.06993), [IRCA](https://ieeexplore.ieee.org/abstract/document/8793511?casa_token=JhE9dkqEDnIAAAAA:hM87BOCnSA7_O2QLpqzVM3fjwEX9Jb2UyG527J0nXqH8Pvt1j_uDecAADcDxWTBBliLgLnrb8r8) /  공식 페이지 - [Link](https://sites.google.com/view/lio-mapping)  
@@ -28,15 +45,16 @@ comments: true
 - 실험 환경 : Velodyne VLP-16 (LiDAR) + Xsens MTi-100 (IMU)  
 Indoor - handheld / UAV, Outdoor -  golf car / KAIST Urban dataset  
 - **Main Contribution / Key IDEA**  
-    1. Tightly coupled lidar-IMU fusion method  
+    1. 최적화를 진행할 때 optimization-based method를 사용   
     2. Initialization 방법과 Optimization 방법을 [VINS-MONO](https://taeyoung96.github.io/research/VINS_mono/)에서 많이 영감을 받음  
     3. Global map을 다시 구성할 때 Rotational constraints를 추가하여 Gauss-newton 방법으로 최적화를 진행  
+    4. 계산량이 조금 많다는 것이 단점  
 
 ## LIO-SAM (IROS 2020)  
 
 - 논문 링크 : [Arxiv](https://arxiv.org/abs/2007.00258), [IROS](https://ieeexplore.ieee.org/abstract/document/9341176?casa_token=-VvWqtE7GGQAAAAA:sWAz4VR5VbI0ffXNOwnKtlyFdpmaV__5gqO61UPDjVFP4tqmn7aqlK8GdiPbDBNbf5cS-sz8YBw)  
 - 코드 공개 여부 : O ([Github](https://github.com/TixiaoShan/LIO-SAM))  
-- 실험 환경 : Velodyne VLP16, Ouster OS1-128 (LiDAR) + Microstrain 3DM-GX5-25 (IMU)  
+- 실험 환경 : Velodyne VLP16 or Ouster OS1-128 (LiDAR) + Microstrain 3DM-GX5-25 (IMU)  
 Outdoor - Jackal platform or handheld로 실험, MIT campus dataset 구축 
 - **Main Contribution / Key IDEA**  
     1. factor graph로 문제 해결 : IMU-preintegration, lidar odometry, loop closure, GPS factor 사용  
@@ -47,6 +65,13 @@ Outdoor - Jackal platform or handheld로 실험, MIT campus dataset 구축
 
 - 논문 링크 : [Arxiv](https://arxiv.org/abs/1907.02233), [ICRA](https://ieeexplore.ieee.org/abstract/document/9197567?casa_token=6yu-wNE_uX0AAAAA:79GiPPtW-bWALGHfCGtj1LE0TbmLlfQ4PVH5_RiF5ZJ5zoR-dhIcY5RrhoM_8tsEcxCt1cMZMWs)  
 - 코드 공개 여부 : O ([Github](https://github.com/ChaoqinRobotics/LINS---LiDAR-inertial-SLAM))  
+- 실험 환경 : Velodyne VLP-16 (LiDAR) + Xsens MTiG-710 (IMU)  
+Ground Vehicle에서 실험, 주로 Outdoor에서 실험하고 GroundTruth는 GPS로 취득  
+- **Main Contribution / Key IDEA**  
+    1. [LIO-Mapping(ICRA 2019)](https://taeyoung96.github.io/research/LIO_review/#lio-mapping-irca-2019)과 저자들이 많이 겹침, LIO-Mapping보다 속도가 빠르다고 주장    
+    2. 최초로 IEKF(iterated EKF)를 사용하여 LIO 문제를 해결하려 함  
+    3. "Quaternion kinematics for the error-state Kalman filter" [논문](https://arxiv.org/abs/1711.02508)의 방법을 활용하여 error state를 표현함으로써 짐벌락 문제(gimbal lock problem)가 일어나지 않도록 해결  
+    4. Feature extraction 및 Mapping 모듈은 LOAM & LeGO-LOAM의 방법을 사용, Odometry를 계산하는 모듈만 IMU를 추가하여 IEKF로 바꿨다고 이해하면 편함  
 
 
 ## KFS-LIO (ICRA 2021)  
@@ -61,3 +86,9 @@ KAIST Urban dataset
      3. LOAM에서 Random으로 feature를 sampling하는 것 보다 제안하는 방법이 좋다고 강조  
      4. Loop closure detection에서 LiDAR, IMU의 residual을 활용한 새로운 Threshold를 제안, uncertainty를 관리하기 위함  
 
+## Fast-LIO (RA-L 2021)  
+
+- 논문 링크 : [Arxiv](https://arxiv.org/abs/2010.08196), [RA-L](https://ieeexplore.ieee.org/abstract/document/9372856?casa_token=68-TG9_vircAAAAA:gUShyxS1C9Z3Wktfyje4D05xbqEYp_0iwruZ-58A2vfgxaetSeMWoE9E-lo_UEHz_lLGQE50uec)  
+- 코드 공개 여부 : O ([Github](https://github.com/hku-mars/FAST_LIO)) - 현재 Fast-LIO2로 update 되어있음  
+- 실험 환경 : UAV platform을 활용, Livox Avia (LiDAR) + Livox Avia built in IMU,  
+Velodyne VLP-16 (LiDAR) + Xsens MTiG-710 (IMU) : [LINS (ICRA 2020)](#lins-icra-2020)와 비교를 위함  
