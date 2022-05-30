@@ -29,7 +29,7 @@ comments: true
 - [Fast-LIO (RA-L 2021)](#fast-lio-ra-l-2021)  
 
 ## LIPS (IROS 2018)  
-- 논문 링크 : [Pdf](http://udel.edu/~yuyang/downloads/geneva_iros2018.pdf), [IROS](https://ieeexplore.ieee.org/abstract/document/8594463?casa_token=hPx-fVYrhrwAAAAA:_EWIAp3SvS7rsRNDlytCkhvGhHvRYVQN2bjbSVflCouTXoyPaWMrJN_ZBrjBsBg1BHqaoaEV8Rc)  
+- 논문 링크 : [Pdf](http://udel.edu/~yuyang/downloads/geneva_iros2018.pdf), [IROS](https://ieeexplore.ieee.org/abstract/document/8594463)  
 - 코드 공개 여부 : O ([Github](https://github.com/rpng/lips))  
 - 실험 환경 : custom LiDAR IMU simulator,  
     Quanergy M8(LiDAR) + Microstrain 3DM-GX3-25 (IMU)  
@@ -40,7 +40,7 @@ comments: true
     4. 과연 plane만으로 constraints를 만들고 최적화를 진행하면 정확하게 LiDAR의 pose가 추정이 될지는 의심이 든다...  
 
 ## LIO-Mapping (IRCA 2019)  
-- 논문 링크 : [Arxiv](https://arxiv.org/abs/1904.06993), [IRCA](https://ieeexplore.ieee.org/abstract/document/8793511?casa_token=JhE9dkqEDnIAAAAA:hM87BOCnSA7_O2QLpqzVM3fjwEX9Jb2UyG527J0nXqH8Pvt1j_uDecAADcDxWTBBliLgLnrb8r8) /  공식 페이지 - [Link](https://sites.google.com/view/lio-mapping)  
+- 논문 링크 : [Arxiv](https://arxiv.org/abs/1904.06993), [IRCA](https://ieeexplore.ieee.org/abstract/document/8793511) /  공식 페이지 - [Link](https://sites.google.com/view/lio-mapping)  
 - 코드 공개 여부 : O ([Github](https://github.com/hyye/lio-mapping))  
 - 실험 환경 : Velodyne VLP-16 (LiDAR) + Xsens MTi-100 (IMU)  
 Indoor - handheld / UAV, Outdoor -  golf car / KAIST Urban dataset  
@@ -52,7 +52,7 @@ Indoor - handheld / UAV, Outdoor -  golf car / KAIST Urban dataset
 
 ## LIO-SAM (IROS 2020)  
 
-- 논문 링크 : [Arxiv](https://arxiv.org/abs/2007.00258), [IROS](https://ieeexplore.ieee.org/abstract/document/9341176?casa_token=-VvWqtE7GGQAAAAA:sWAz4VR5VbI0ffXNOwnKtlyFdpmaV__5gqO61UPDjVFP4tqmn7aqlK8GdiPbDBNbf5cS-sz8YBw)  
+- 논문 링크 : [Arxiv](https://arxiv.org/abs/2007.00258), [IROS](https://ieeexplore.ieee.org/abstract/document/9341176)  
 - 코드 공개 여부 : O ([Github](https://github.com/TixiaoShan/LIO-SAM))  
 - 실험 환경 : Velodyne VLP16 or Ouster OS1-128 (LiDAR) + Microstrain 3DM-GX5-25 (IMU)  
 Outdoor - Jackal platform or handheld로 실험, MIT campus dataset 구축 
@@ -63,7 +63,7 @@ Outdoor - Jackal platform or handheld로 실험, MIT campus dataset 구축
 
 ## LINS (ICRA 2020)  
 
-- 논문 링크 : [Arxiv](https://arxiv.org/abs/1907.02233), [ICRA](https://ieeexplore.ieee.org/abstract/document/9197567?casa_token=6yu-wNE_uX0AAAAA:79GiPPtW-bWALGHfCGtj1LE0TbmLlfQ4PVH5_RiF5ZJ5zoR-dhIcY5RrhoM_8tsEcxCt1cMZMWs)  
+- 논문 링크 : [Arxiv](https://arxiv.org/abs/1907.02233), [ICRA](https://ieeexplore.ieee.org/abstract/document/9197567)  
 - 코드 공개 여부 : O ([Github](https://github.com/ChaoqinRobotics/LINS---LiDAR-inertial-SLAM))  
 - 실험 환경 : Velodyne VLP-16 (LiDAR) + Xsens MTiG-710 (IMU)  
 Ground Vehicle에서 실험, 주로 Outdoor에서 실험하고 GroundTruth는 GPS로 취득  
@@ -88,7 +88,21 @@ KAIST Urban dataset
 
 ## Fast-LIO (RA-L 2021)  
 
-- 논문 링크 : [Arxiv](https://arxiv.org/abs/2010.08196), [RA-L](https://ieeexplore.ieee.org/abstract/document/9372856?casa_token=68-TG9_vircAAAAA:gUShyxS1C9Z3Wktfyje4D05xbqEYp_0iwruZ-58A2vfgxaetSeMWoE9E-lo_UEHz_lLGQE50uec)  
+- 논문 링크 : [Arxiv](https://arxiv.org/abs/2010.08196), [RA-L](https://ieeexplore.ieee.org/abstract/document/9372856)  
 - 코드 공개 여부 : O ([Github](https://github.com/hku-mars/FAST_LIO)) - 현재 Fast-LIO2로 update 되어있음  
 - 실험 환경 : UAV platform을 활용, Livox Avia (LiDAR) + Livox Avia built in IMU,  
 Velodyne VLP-16 (LiDAR) + Xsens MTiG-710 (IMU) : [LINS (ICRA 2020)](#lins-icra-2020)와 비교를 위함  
+- **Main Contribution / Key IDEA**  
+    1. [LINS (ICRA 2020)](#lins-icra-2020)와 동일하게 IEKF(iterated EKF)를 사용하여 state estimation  
+    2. 새로운 Kalman Gain 공식을 제안하여 measureent dimension(LiDAR point cloud)이 아닌 state dimension(Pose)에 기반하여 Kalman Gain을 구함.  
+    3. IMU measurement를 기반으로 LiDAR point cloud의 motion compensation을 진행  
+    4. Odometry에서 예측한 pose를 기반으로 Map 형성, scan to map 방식으로 Correspondense를 구함.  
+
+
+## Fast-LIO2 (T-RO 2022)  
+
+- 논문 링크 : [Arxiv](https://arxiv.org/abs/2107.06829), [T-RO](https://ieeexplore.ieee.org/document/9697912)  
+- 코드 공개 여부 : O ([Github](https://github.com/hku-mars/FAST_LIO))  
+- 실험 환경 : 여러 SOTA 알고리즘들과 비교 (LILI-OM, LIO-SAM, LINS...)  
+NCLT datast, UTDM dataset, Urbanloco dataset  
+- **Main Contribution / Key IDEA**  
