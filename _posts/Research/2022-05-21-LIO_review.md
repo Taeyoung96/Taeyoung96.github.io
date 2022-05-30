@@ -27,6 +27,7 @@ comments: true
 - [LINS (ICRA 2020)](#lins-icra-2020)  
 - [KFS-LIO (ICRA 2021)](#kfs-lio-icra-2021)  
 - [Fast-LIO (RA-L 2021)](#fast-lio-ra-l-2021)  
+- [Fast-LIO2 (T-RO 2022)](#fast-lio2-t-ro-2022)   
 
 ## LIPS (IROS 2018)  
 - 논문 링크 : [Pdf](http://udel.edu/~yuyang/downloads/geneva_iros2018.pdf), [IROS](https://ieeexplore.ieee.org/abstract/document/8594463)  
