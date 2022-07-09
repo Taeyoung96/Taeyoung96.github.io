@@ -59,4 +59,8 @@ comments: true
     `tensorboard --logdir=[log 경로] --port [포트 번호] --host=0.0.0.0`  
     포트 번호는 보통 6006이다.  
 
+- **Docker Image를 dockerhub로 올리기** :  
+    `docker login` 완료 후,  
+    `docker push [이미지 이름[:tag name]]`  
+
 

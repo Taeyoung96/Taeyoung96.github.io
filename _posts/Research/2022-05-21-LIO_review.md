@@ -17,7 +17,7 @@ comments: true
 
 개인적인 생각으론 최근 [Fast-LIO](https://github.com/hku-mars/FAST_LIO) 계열 시리즈가 주목을 많이 받고 있기 때문에 여기 나와 있는 Related works 및 구글링을 통해 조사를 진행했다. 논문의 핵심 아이디어만 이야기하는 식으로 정리를 하고자 한다.  
 
-**❗️ 공부를 이제 막 시작한 입장으로써 잘못된 내용이 있을 수 있습니다.  
+**❗️ 공부를 한 것을 정리해놓은 포스팅으로써 잘못된 내용이 있을 수 있습니다.  
 틀린 부분이 있거나 중요한데 놓친 논문이 있다면 댓글로 알려주시면 감사드리겠습니다! 😆**  
 
 ## Paper List  
@@ -28,6 +28,8 @@ comments: true
 - [KFS-LIO (ICRA 2021)](#kfs-lio-icra-2021)  
 - [Fast-LIO (RA-L 2021)](#fast-lio-ra-l-2021)  
 - [Fast-LIO2 (T-RO 2022)](#fast-lio2-t-ro-2022)   
+- [Globally Consistent and Tightly Coupled 3D LiDAR Inertial Mapping (ICRA 2022)](#globally-consistent-and-tightly-coupled-3d-lidar-inertial-mapping-icra-2022)  
+- [Wildcat (Arxiv 2022)](#wildcat-arxiv-2022)  
 
 ## LIPS (IROS 2018)  
 - 논문 링크 : [Pdf](http://udel.edu/~yuyang/downloads/geneva_iros2018.pdf), [IROS](https://ieeexplore.ieee.org/abstract/document/8594463)  
@@ -107,3 +109,43 @@ Velodyne VLP-16 (LiDAR) + Xsens MTiG-710 (IMU) : [LINS (ICRA 2020)](#lins-icra-2
 - 실험 환경 : 여러 SOTA 알고리즘들과 비교 (LILI-OM, LIO-SAM, LINS...)  
 NCLT datast, UTDM dataset, Urbanloco dataset  
 - **Main Contribution / Key IDEA**  
+    1. [Fast-LIO (RA-L 2021)](#fast-lio-ra-l-2021)의 저널 확장판  
+    2. Fast-lio와 달리 feature extraction 부분이 없음. Raw한 point cloud를 바로 활용  
+    3. LiDAR feature를 뽑지 않으므로 새로운 Measurement model 제안하여 residual 계산  
+    4. LiDAR-IMU extrinsic parameter를 state vector에 넣어 계산을 진행함  
+       (Fast-LIO의 경우 extrinsic parameter는 안다고 가정)  
+    5. Map을 효율적으로 관리할 수 있는 자료구조인 iKD tree라는 구조를 제안  
+
+
+## Globally Consistent and Tightly Coupled 3D LiDAR Inertial Mapping (ICRA 2022)  
+
+LIO(LiDAR-inertial odoemtry)가 아닌 LI-SLAM(LiDAR-inertial SLAM) 논문이다!  
+
+- 논문 링크 : [Arxiv](https://arxiv.org/abs/2202.00242)  
+- 코드 공개 여부 : X  
+- 실험 환경 : KAIST urban dataset / Newer College Dataset  
+- **Main Contribution / Key IDEA**   
+    1. 일반적인 LIO system의 경우 front-end 부분에서만 IMU를 사용하지만, 이 논문에서는 front-end부터 back-end까지 IMU를 활용하여 최적화를 진행  
+    2. Odometry estimation, Local mapping, Global mapping 총 3가지 모듈로 구성  
+       (전부 IMU 활용)  
+    3. Visual SLAM 논문인 DSO(Direct Sparse Odometry)에서 영감을 받아 front-end를 keyframe-based fixed-lag smoothing method 사용  
+    4. GPU 가속이 가능하도록 알고리즘 설계  
+    5. GTSAM을 활용하여 non-linear optimziation를 진행  
+
+## Wildcat (Arxiv 2022)  
+
+LIO(LiDAR-inertial odoemtry)가 아닌 LI-SLAM(LiDAR-inertial SLAM) 논문이다!   
+
+- 논문 링크 : [Arxiv](https://arxiv.org/abs/2205.12595)  
+- 코드 공개 여부 : X  
+- 논문 소개 및 설명 동영상 : [Tartan SLAM Series - CSIRO's Wildcat SLAM](https://youtu.be/YCE1Aj0k1UA)  
+- 실험 환경  : DARPA Subterranean Environments / MulRan / QCAT dataset  
+             Velodyne VLP16 (LiDAR) + Microstrain 3DM-CV5 IMU (IMU)  
+             Ouster OS1-64 (LiDAR + built in IMU)  
+- **Main Contribution / Key IDEA**   
+    1. DARPA Subterranean Challenge에서 우승한 알고리즘  
+    2. Continuous-Time을 활용한 최적화 방법을 사용 (이 부분에 대한 지식이 아직 부족하다..)  
+    3. LiDAR로 voxelization을 multi-scale로 하면서 surfel을 뽑아냄  
+    4. LiDAR Odometry는 Sliding window optimization을 사용  
+    5. PGO(Pose graph optimization)을 사용, Loop closure detection 같은 경우는 point-to-plane ICP,  Mahalanobis distance search radius 기반으로 진행  
+
