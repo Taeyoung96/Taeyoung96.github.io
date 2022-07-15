@@ -111,7 +111,7 @@ NCLT datast, UTDM dataset, Urbanloco dataset
 - **Main Contribution / Key IDEA**  
     1. [Fast-LIO (RA-L 2021)](#fast-lio-ra-l-2021)의 저널 확장판  
     2. Fast-lio와 달리 feature extraction 부분이 없음. Raw한 point cloud를 바로 활용  
-    3. LiDAR feature를 뽑지 않으므로 새로운 Measurement model 제안하여 residual 계산  
+    3. LiDAR feature를 뽑지 않으므로 새로운 Measurement model 제안하여 residual 계산 (G-ICP와 유사)  
     4. LiDAR-IMU extrinsic parameter를 state vector에 넣어 계산을 진행함  
        (Fast-LIO의 경우 extrinsic parameter는 안다고 가정)  
     5. Map을 효율적으로 관리할 수 있는 자료구조인 iKD tree라는 구조를 제안  
