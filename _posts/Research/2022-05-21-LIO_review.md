@@ -101,6 +101,7 @@ Velodyne VLP-16 (LiDAR) + Xsens MTiG-710 (IMU) : [LINS (ICRA 2020)](#lins-icra-2
     3. IMU measurement를 기반으로 LiDAR point cloud의 motion compensation을 진행  
     4. Odometry에서 예측한 pose를 기반으로 Map 형성, scan to map 방식으로 Correspondense를 구함.  
 
+FAST-LIO의 간략한 논문 리뷰를 [다른 포스팅](https://taeyoung96.github.io/research/Fast_LIO/)에도 적어보았다!
 
 ## Fast-LIO2 (T-RO 2022)  
 
