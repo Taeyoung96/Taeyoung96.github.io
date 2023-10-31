@@ -30,7 +30,7 @@ Velodyne 3D LiDAR를 세팅할 때도 고생을 좀 했지만, Sick의 경우도
 먼저, Sick 2D LiDAR의 [공식 홈페이지](https://www.sick.com/de/en/search?text=SOPAS%20Engineering%20Tool)에 들어가서 SOPAS engineering Tool 소프트웨어를 설치해준다.  
 이 소프트웨어가 아쉽게도 .exe 파일로 되어있기 때문에 필수적으로 Window에서 실행을 해야한다.  
 
-(혹시, 우분투에서도 가능한 방법이 있다면 댓글로 알려주시면 감사드리겠습니다. 😆)
+**혹시, 우분투에서도 가능한 방법이 있다면 댓글로 알려주시면 감사드리겠습니다.** 😆
 {: .notice--info}
 
 SOPAS engineering Tool을 실행할 경우, 아래의 그림처럼 2D LiDAR가 잡히는 것을 확인할 수 있다.  
