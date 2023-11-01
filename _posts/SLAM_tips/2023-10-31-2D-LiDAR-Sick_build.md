@@ -116,7 +116,7 @@ ros2 launch sick_scan2 sick_tim_5xx.launch.py
 
 <p align="center"><img src="https://github.com/Taeyoung96/Taeyoung96.github.io/assets/41863759/57c2d4f3-deb5-46d6-b50f-8e413692c080" width = "700" ></p>  
 
-참으로 짜릿한 순간이 아니한가...  
+**참으로 짜릿한 순간이 아니한가...**  
 이 data를 못받아서 삽질을 한 날들이 주마등처럼 스쳐 지나갔다.  
 
 추후 미래의 나에게 또 여러 사람들의 시간을 절약하는 포스팅이 되었으면 한다.  
@@ -125,7 +125,7 @@ ros2 launch sick_scan2 sick_tim_5xx.launch.py
 
 IP setting과 관련해서 Ubuntu에서 몇 가지 시도해본 명령어들을 기록해본다.  
 
-1. LAN선으로 LiDAR를 연결했는데 갑자기 WIFI로 사용하던 인터넷이 잡히지 않을 때  
+### LAN선으로 LiDAR를 연결했는데 갑자기 WIFI로 사용하던 인터넷이 잡히지 않을 때  
 
 이 때는 `route`의 우선순위가 바뀌었을 가능성이 상당히 높다.  
 터미널을 열고 `route`라는 명령어를 입력해보자.  
@@ -152,7 +152,7 @@ sudo ifmetric wlo1 10
 
 이렇게 WIFI의 모듈의 우선순위가 높도록 변경해준다.  
 
-2. ping 확인 및 TCP/IP test  
+### ping 확인 및 TCP/IP test  
 
 - Ping test  
 ```
@@ -197,3 +197,4 @@ GPT의 답변을 요약하면 아래와 같다.
 - [[Linux] 라우팅 테이블 설정(route, Metric 우선순위)](https://changun516.tistory.com/141)  
 - [IP address configuration](https://github.com/SICKAG/sick_scan/blob/master/doc/ipconfig/ipconfig.md)  
 - [[Sensor] Sick TiM571 윈도우 ip 및 뷰어 셋팅](https://changun516.tistory.com/225)  
+- [센서 구동 - SICK LMS511 (2)](https://blastak.github.io/%EC%84%BC%EC%84%9C-%EA%B5%AC%EB%8F%99-SICK-LMS511-(2).html)
