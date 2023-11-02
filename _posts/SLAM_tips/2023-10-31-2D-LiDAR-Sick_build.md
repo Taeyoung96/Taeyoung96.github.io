@@ -12,9 +12,7 @@ comments: true
 
 2D LiDAR Sick TIM 571 제품의 IP setting 및 ROS2 package를 설치해보자.  
 
-최근 연구실에서 새로운 로봇과 관련해 세팅을 해야할 일이 있는데 정리를 해두면 추후 편할 것 같아 포스팅을 진행하려고 한다.  
-
-Velodyne 3D LiDAR를 세팅할 때도 고생을 좀 했지만, Sick의 경우도 마찬가지로 IP setting을 진행해 줘야 한다.  
+최근 연구실에서 새로운 로봇과 관련해 세팅을 해야할 일이 있는데 정리를 해두면 추후 편할 것 같아 포스팅을 진행하려고 한다. Velodyne 3D LiDAR를 세팅할 때도 고생을 좀 했지만, Sick의 경우도 마찬가지로 IP setting을 진행해 줘야 한다.  
 
 **여기서 중요한건 Sick LiDAR의 경우 IP setting을 Window에서만 진행이 가능하다!!**  
 
@@ -34,7 +32,7 @@ Velodyne 3D LiDAR를 세팅할 때도 고생을 좀 했지만, Sick의 경우도
 {: .notice--info}
 
 SOPAS engineering Tool을 실행할 경우, 아래의 그림처럼 2D LiDAR가 잡히는 것을 확인할 수 있다.  
-여기서 Add 버튼을 눌러준다.    
+여기서 Add 버튼을 눌러준다. (Port 번호가 다른 모습을 확인할 수 있는데, 난 확실하게 모두 Add를 진행했다.)   
 
 <p align="center"><img src="https://github.com/Taeyoung96/Taeyoung96.github.io/assets/41863759/75ea5255-8eed-4bcf-86fb-6306d41e8e98" width = "700" ></p>  
 
@@ -51,7 +49,7 @@ Add를 누르게 될 경우, 아래 그림처럼 화면이 바뀌게 된다.
 
 💥 **하지만 여기서 주의할 점이 한 가지가 있다.**  💥  
 
-PC의 IP setting을 따라서 2D LiDAR setting을 맞추기 때문에, PC IP setting을 먼저 원하는 IP 주소로 맞춰야 한다.  
+PC의 IP setting을 따라서 2D LiDAR setting을 맞추기 때문에 PC IP setting을 먼저 원하는 IP 주소로 맞춰야 한다.  
 
 <p align="center"><img src="https://github.com/Taeyoung96/Taeyoung96.github.io/assets/41863759/8eee7cc8-2208-4f04-96ba-e8c41cc00151" width = "500" ></p>  
 
@@ -63,7 +61,8 @@ PC의 IP setting을 따라서 2D LiDAR setting을 맞추기 때문에, PC IP set
 
 수동으로 IP 주소를 바꿔서 원하는 IP 주소로 변경을 진행하자!! 
 
-현재, 필자의 경우는 `192.168.1.XXX` 로 되어있는 IP 주소가 필요했다. 왜냐하면 Ubuntu 20.04에서 `192.168.1.XXX` 로 IP를 할당했기 때문이다.  
+현재, 필자의 경우는 `192.168.1.XXX` 로 되어있는 IP 주소가 필요했다  
+왜냐하면 Ubuntu 20.04에서 `192.168.1.XXX` 로 IP를 할당했기 때문이다.  
 **만약 원하는 IP 주소가 다를 경우, 이 PC IP setting부터 원하는 IP 주소로 setting을 진행해주면 된다.**  
 
 <p align="center"><img src="https://github.com/Taeyoung96/Taeyoung96.github.io/assets/41863759/6caf34a8-a779-4ec0-86a0-1e21544d2a60" width = "300" ></p>  
@@ -95,7 +94,7 @@ ROS2와 관련된 설치는 이미 되어 있다고 가정하고 포스팅을 �
 패키지 빌드를 하는데 체감상 큰 Trubleshooting은 없었던 것으로 기억된다.  
 
 이제 이전에 setting을 진행한 IP 주소를 `config` 폴더에 있는 `.yaml` 파일에 알맞게 설정하자.  
-필자의 경우, Sick tim 571 제품을 사용하기 때문에, `sick_tim_5xx.yaml` 파일을 수정했다.  
+필자의 경우, Sick tim 571 제품을 사용하기 때문에 `sick_tim_5xx.yaml` 파일을 수정했다.  
 
 <p align="center"><img src="https://github.com/Taeyoung96/Taeyoung96.github.io/assets/41863759/162346bb-846b-4339-bb63-87dc59d02b14" width = "600" ></p>  
 
@@ -151,6 +150,13 @@ sudo ifmetric wlo1 10
 ```
 
 이렇게 WIFI의 모듈의 우선순위가 높도록 변경해준다.  
+
+💥 **여기서 갑자기 잘 동작하던 2D LiDAR package가 실행이 안된다면...?** 💥 
+
+갑자기 route의 우선순위를 바꾸고, 잘 되던 2D LiDAR package가 안되는 현상을 발견할 수 있었다.  
+원인 분석을 해보니, WIFI의 우선순위가 더 높은 경우, 2D LiDAR package가 연결이 잘 안될 수 있다.  
+따라서, 잘 되던 Package의 통신 이상이 생길 경우, route의 우선순위를 LAN port가 더 높도록 설정시키자.  
+
 
 ### ping 확인 및 TCP/IP test  
 
