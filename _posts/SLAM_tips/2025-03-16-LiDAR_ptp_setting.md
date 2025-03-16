@@ -13,11 +13,11 @@ comments: true
 
 LiDAR PTP setting에 대해서 알아보자!
 
-최근 Obsidian을 활용하면서 블로그에 포스팅을 하는 빈도수가 상당히 줄었다.. 하지만 꼭 기록하고 싶은 내용은 차근차근 포스팅을 진행해보겠다.  
+최근 Obsidian을 활용하면서 블로그에 포스팅을 하는 빈도수가 상당히 줄었다.. 😏 하지만 꼭 기록하고 싶은 내용은 차근차근 포스팅을 진행해보겠다.  
 
 ## PTP란?
 
-Precision Time Protocol의 줄임마로 네트워크 상의 장치들이 정밀한 시간 동기화를 위해 서로 메시지를 교환하는 표준 프로토콜을 의미한다.
+Precision Time Protocol의 줄임말로 네트워크 상의 장치들이 정밀한 시간 동기화를 위해 서로 메시지를 교환하는 표준 프로토콜을 의미한다.
 
 - **메시지 교환:**
     - **Sync:** 마스터가 현재 시간을 전송
@@ -222,10 +222,10 @@ pmc -u -b 0 "GET TIME_STATUS_NP"
 
 ---
 
-이렇게 LiDAR PTP setting과 관련된 포스팅을 마치겠다. 추후 GPS 및 PPS 신호도 이용해보면 한번 정리해봐야겠다!
+이렇게 (최근 나를 괴롭힌) LiDAR PTP setting과 관련된 포스팅을 마치겠다. 추후 GPS 및 PPS 신호도 이용해보면 한번 정리해봐야겠다!  
 
 
 ## Reference
-- https://livox-wiki-en.readthedocs.io/en/latest/tutorials/new_product/common/time_sync.html#time-synchronization-instructions
-- https://static.ouster.dev/sensor-docs/image_route1/image_route2/appendix/ptp-quickstart.html#ptp-quickstart-guide
-- https://discourse.ros.org/t/experience-with-ptp-precision-time-protocol-for-mobile-robots/24707/6
+- [Livox PTP documentation](https://livox-wiki-en.readthedocs.io/en/latest/tutorials/new_product/common/time_sync.html#time-synchronization-instructions)
+- [Ouster PTP documentation](https://static.ouster.dev/sensor-docs/image_route1/image_route2/appendix/ptp-quickstart.html#ptp-quickstart-guide)
+- [ROS discourse](https://discourse.ros.org/t/experience-with-ptp-precision-time-protocol-for-mobile-robots/24707/6)
